@@ -7,4 +7,4 @@
 # Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 #
 
-vivado -log vga_sync.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_sync.tcl
+vivado -log vga_test.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_test.tcl
