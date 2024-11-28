@@ -48,7 +48,7 @@ BEGIN
    -- Chessboard pattern generation
    PROCESS (pixel_x, pixel_y, video_on)
       VARIABLE square_x, square_y : INTEGER;
-      CONSTANT square_size : INTEGER := 60; -- Adjust square size as needed
+      CONSTANT square_size : INTEGER := 64; -- Adjust square size as needed
    BEGIN
       IF video_on = '1' THEN
          square_x := to_integer(unsigned(pixel_x)) / square_size;
@@ -66,3 +66,4 @@ BEGIN
          rgb_reg <= (OTHERS => '0');
       END IF;
    END PROCESS;
+   END arch;
