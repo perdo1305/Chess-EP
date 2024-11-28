@@ -48,33 +48,21 @@ BEGIN
    -- Chessboard pattern generation
    PROCESS (pixel_x, pixel_y, video_on)
       VARIABLE square_x, square_y : INTEGER;
-      VARIABLE adjusted_x, adjusted_y : INTEGER;
-      CONSTANT square_size : INTEGER := 60; -- Square size for both dimensions
-      CONSTANT board_start_x : INTEGER := 80; -- Center the board horizontally
-      CONSTANT board_start_y : INTEGER := 0;
+      CONSTANT square_size : INTEGER := 60; -- Adjust square size as needed
    BEGIN
       IF video_on = '1' THEN
-         adjusted_x := to_integer(unsigned(pixel_x)) - board_start_x;
-         adjusted_y := to_integer(unsigned(pixel_y)) - board_start_y;
-         IF adjusted_x >= 0 AND adjusted_x < square_size * 8 AND
-            adjusted_y >= 0 AND adjusted_y < square_size * 8 THEN
-            square_x := adjusted_x / square_size;
-            square_y := adjusted_y / square_size;
-            -- Check for edge squares
-            IF square_x = 0 OR square_x = 7 OR square_y = 0 OR square_y = 7 THEN
-               rgb_reg <= "101000110011"; -- brown
+         square_x := to_integer(unsigned(pixel_x)) / square_size;
+         square_y := to_integer(unsigned(pixel_y)) / square_size;
+         IF square_x < 8 AND square_y < 8 THEN
+            IF (square_x + square_y) MOD 2 = 0 THEN
+               rgb_reg <= (OTHERS => '1'); -- White square
             ELSE
-               IF (square_x + square_y) MOD 2 = 0 THEN
-                  rgb_reg <= (OTHERS => '1'); -- White square
-               ELSE
-                  rgb_reg <= (OTHERS => '0'); -- Black square
-               END IF;
+               rgb_reg <= (OTHERS => '0'); -- Black square
             END IF;
          ELSE
-            rgb_reg <= (OTHERS => '0'); -- Background color
+            rgb_reg <= (OTHERS => '0'); -- Background color (black)
          END IF;
       ELSE
          rgb_reg <= (OTHERS => '0');
       END IF;
    END PROCESS;
-END arch;

@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Thu Nov 21 21:07:47 2024
-# Process ID: 79765
+# Start of session at: Thu Nov 28 09:25:24 2024
+# Process ID: 76386
 # Current directory: /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1
 # Command line: vivado -log vga_test.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_test.tcl
 # Log file: /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/vga_test.vds
@@ -13,16 +13,16 @@
 # Platform          :Pop
 # Operating System  :Pop!_OS 22.04 LTS
 # Processor Detail  :AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx
-# CPU Frequency     :1769.450 MHz
+# CPU Frequency     :2323.520 MHz
 # CPU Physical cores:4
 # CPU Logical cores :8
 # Host memory       :14590 MB
-# Swap memory       :14589 MB
-# Total Virtual     :29180 MB
-# Available Virtual :20550 MB
+# Swap memory       :0 MB
+# Total Virtual     :14590 MB
+# Available Virtual :4813 MB
 #-----------------------------------------------------------
 source vga_test.tcl -notrace
-create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1367.090 ; gain = 8.930 ; free physical = 482 ; free virtual = 19338
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1419.570 ; gain = 0.023 ; free physical = 1797 ; free virtual = 4215
 Command: read_checkpoint -auto_incremental -incremental /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -32,16 +32,18 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Device 21-9227] Part: xc7a35tcpg236-1 does not have CEAM library.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 80004
+INFO: [Synth 8-7075] Helper process launched with PID 76671
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2126.805 ; gain = 410.832 ; free physical = 408 ; free virtual = 18397
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2128.355 ; gain = 411.746 ; free physical = 764 ; free virtual = 3187
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'vga_test' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync_test.vhd:15]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-79765-pop-os/realtime/clk_wiz_0_stub.v:6' bound to instance 'clock_unit' of component 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync_test.vhd:32]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-79765-pop-os/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-79765-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-76386-pop-os/realtime/clk_wiz_0_stub.v:6' bound to instance 'clock_unit' of component 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync_test.vhd:32]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-76386-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-76386-pop-os/realtime/clk_wiz_0_stub.v:6]
 INFO: [Synth 8-638] synthesizing module 'vga_sync' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'vga_sync' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'vga_test' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync_test.vhd:15]
@@ -73,18 +75,18 @@ WARNING: [Synth 8-7129] Port sw[2] in module vga_test is either unconnected or h
 WARNING: [Synth 8-7129] Port sw[1] in module vga_test is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sw[0] in module vga_test is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2204.742 ; gain = 488.770 ; free physical = 446 ; free virtual = 18308
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2205.324 ; gain = 488.715 ; free physical = 649 ; free virtual = 3076
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2219.586 ; gain = 503.613 ; free physical = 445 ; free virtual = 18307
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2220.168 ; gain = 503.559 ; free physical = 647 ; free virtual = 3074
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2219.586 ; gain = 503.613 ; free physical = 445 ; free virtual = 18307
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2220.168 ; gain = 503.559 ; free physical = 647 ; free virtual = 3074
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2219.586 ; gain = 0.000 ; free physical = 445 ; free virtual = 18307
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2220.168 ; gain = 0.000 ; free physical = 647 ; free virtual = 3074
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -97,20 +99,22 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/vga_test_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2353.336 ; gain = 0.000 ; free physical = 402 ; free virtual = 18279
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2357.918 ; gain = 0.000 ; free physical = 640 ; free virtual = 3068
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2353.336 ; gain = 0.000 ; free physical = 402 ; free virtual = 18279
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2357.918 ; gain = 0.000 ; free physical = 640 ; free virtual = 3068
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2353.336 ; gain = 637.363 ; free physical = 402 ; free virtual = 18280
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2357.918 ; gain = 641.309 ; free physical = 600 ; free virtual = 3032
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 402 ; free virtual = 18280
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 600 ; free virtual = 3032
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -119,31 +123,11 @@ Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  /home/pedr
 Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
 Applied set_property KEEP_HIERARCHY = SOFT for clock_unit. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 396 ; free virtual = 18274
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 600 ; free virtual = 3032
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Start Preparing Guide Design
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 598 ; free virtual = 3031
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6895] The reference checkpoint /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp is not suitable for use with incremental synthesis for this design. Please regenerate the checkpoint for this design with -incremental_synth switch in the same Vivado session that synth_design has been run. Synthesis will continue with the default flow
----------------------------------------------------------------------------------
-Finished Doing Graph Differ : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 396 ; free virtual = 18274
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Preparing Guide Design : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 396 ; free virtual = 18274
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 396 ; free virtual = 18274
----------------------------------------------------------------------------------
-
-
-Incremental Synthesis Report Summary:
-
-1. Incremental synthesis run: no
-
-   Reason for not running incremental synthesis : 
-
-
-INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -196,25 +180,25 @@ WARNING: [Synth 8-7129] Port sw[2] in module vga_test is either unconnected or h
 WARNING: [Synth 8-7129] Port sw[1] in module vga_test is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sw[0] in module vga_test is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 367 ; free virtual = 18251
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:22 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 580 ; free virtual = 3017
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 584 ; free virtual = 18296
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 624 ; free virtual = 3077
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 584 ; free virtual = 18295
+Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 610 ; free virtual = 3063
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 584 ; free virtual = 18295
+Finished Technology Mapping : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 618 ; free virtual = 3069
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -232,37 +216,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 549 ; free virtual = 18272
+Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 589 ; free virtual = 3043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 549 ; free virtual = 18272
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 589 ; free virtual = 3043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 549 ; free virtual = 18272
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 591 ; free virtual = 3045
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 549 ; free virtual = 18272
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 591 ; free virtual = 3045
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 549 ; free virtual = 18272
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 591 ; free virtual = 3045
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 549 ; free virtual = 18272
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 591 ; free virtual = 3045
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -292,28 +276,27 @@ Report Cell Usage:
 |11    |OBUFT   |    12|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.340 ; gain = 645.367 ; free physical = 549 ; free virtual = 18272
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.922 ; gain = 649.312 ; free physical = 591 ; free virtual = 3045
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 1 critical warnings and 25 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 2361.340 ; gain = 511.617 ; free physical = 563 ; free virtual = 18286
-Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2361.348 ; gain = 645.367 ; free physical = 563 ; free virtual = 18286
+Synthesis finished with 0 errors, 0 critical warnings and 25 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:36 ; elapsed = 00:00:36 . Memory (MB): peak = 2365.922 ; gain = 511.562 ; free physical = 573 ; free virtual = 3027
+Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2365.930 ; gain = 649.312 ; free physical = 573 ; free virtual = 3027
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2361.348 ; gain = 0.000 ; free physical = 560 ; free virtual = 18286
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2365.930 ; gain = 0.000 ; free physical = 586 ; free virtual = 3040
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2417.367 ; gain = 0.000 ; free physical = 834 ; free virtual = 18561
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2421.949 ; gain = 0.000 ; free physical = 972 ; free virtual = 3430
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Synth Design complete | Checksum: 66e5c86b
 INFO: [Common 17-83] Releasing license: Synthesis
-24 Infos, 52 Warnings, 1 Critical Warnings and 0 Errors encountered.
+27 Infos, 52 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:38 . Memory (MB): peak = 2417.367 ; gain = 1037.402 ; free physical = 834 ; free virtual = 18561
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1888.596; main = 1561.088; forked = 380.021
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3408.809; main = 2417.371; forked = 1047.465
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2441.379 ; gain = 0.000 ; free physical = 834 ; free virtual = 18560
+synth_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:47 . Memory (MB): peak = 2421.949 ; gain = 1002.379 ; free physical = 972 ; free virtual = 3430
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 2002.824; main = 1568.206; forked = 488.770
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3491.617; main = 2421.953; forked = 1125.691
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2445.961 ; gain = 0.000 ; free physical = 972 ; free virtual = 3430
 INFO: [Common 17-1381] The checkpoint '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/vga_test.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file vga_test_utilization_synth.rpt -pb vga_test_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Nov 21 21:08:38 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 28 09:26:27 2024...

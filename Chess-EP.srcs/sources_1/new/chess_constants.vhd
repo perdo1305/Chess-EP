@@ -26,6 +26,9 @@ END chess_constants;
 ARCHITECTURE Behavioral OF chess_constants IS
 
     -- Constants for piece encoding
+    -- msb is color
+    -- last 3 bits are piece type
+
     CONSTANT EMPTY : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0000";
     CONSTANT WHITE_PAWN : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0001";
     CONSTANT WHITE_KNIGHT : STD_LOGIC_VECTOR(3 DOWNTO 0) := "0010";
