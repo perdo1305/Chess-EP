@@ -44,9 +44,17 @@ BEGIN
          vsync => Vsync, video_on => video_on,
          p_tick => OPEN, pixel_x => pixel_x, pixel_y => pixel_y
       );
+<<<<<<< HEAD
    PROCESS (clock, reset)
       VARIABLE row : INTEGER;
       VARIABLE col : INTEGER;
+=======
+
+   -- Chessboard pattern generation
+   PROCESS (pixel_x, pixel_y, video_on)
+      VARIABLE square_x, square_y : INTEGER;
+      CONSTANT square_size : INTEGER := 64; -- Adjust square size as needed
+>>>>>>> origin/perdu
    BEGIN
       IF reset = '1' THEN
          rgb_reg <= (OTHERS => '0');
@@ -65,8 +73,12 @@ BEGIN
          END IF;
       END IF;
    END PROCESS;
+<<<<<<< HEAD
    vgaRed <= rgb_reg(11 DOWNTO 8);
    vgaGreen <= rgb_reg(7 DOWNTO 4);
    vgaBlue <= rgb_reg(3 DOWNTO 0);
 
 END arch;
+=======
+   END arch;
+>>>>>>> origin/perdu
