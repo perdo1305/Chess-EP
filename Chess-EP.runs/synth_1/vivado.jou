@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Thu Nov 28 09:25:24 2024
-# Process ID: 76386
+# Start of session at: Thu Nov 28 10:59:21 2024
+# Process ID: 178108
 # Current directory: /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1
 # Command line: vivado -log vga_test.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_test.tcl
 # Log file: /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/vga_test.vds
@@ -13,12 +13,12 @@
 # Platform          :Pop
 # Operating System  :Pop!_OS 22.04 LTS
 # Processor Detail  :AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx
-# CPU Frequency     :2323.520 MHz
+# CPU Frequency     :1317.386 MHz
 # CPU Physical cores:4
 # CPU Logical cores :8
 # Host memory       :14590 MB
 # Swap memory       :0 MB
 # Total Virtual     :14590 MB
-# Available Virtual :4813 MB
+# Available Virtual :5041 MB
 #-----------------------------------------------------------
 source vga_test.tcl -notrace

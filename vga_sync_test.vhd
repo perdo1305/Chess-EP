@@ -44,25 +44,29 @@ BEGIN
          vsync => Vsync, video_on => video_on,
          p_tick => OPEN, pixel_x => pixel_x, pixel_y => pixel_y
       );
-
-   -- Chessboard pattern generation
-   PROCESS (pixel_x, pixel_y, video_on)
-      VARIABLE square_x, square_y : INTEGER;
-      CONSTANT square_size : INTEGER := 60; -- Adjust square size as needed
+   PROCESS (clock, reset)
+      VARIABLE row : INTEGER;
+      VARIABLE col : INTEGER;
    BEGIN
-      IF video_on = '1' THEN
-         square_x := to_integer(unsigned(pixel_x)) / square_size;
-         square_y := to_integer(unsigned(pixel_y)) / square_size;
-         IF square_x < 8 AND square_y < 8 THEN
-            IF (square_x + square_y) MOD 2 = 0 THEN
-               rgb_reg <= (OTHERS => '1'); -- White square
+      IF reset = '1' THEN
+         rgb_reg <= (OTHERS => '0');
+      ELSIF rising_edge(clock) THEN
+         IF video_on = '1' THEN
+            -- Convert pixel_x and pixel_y to integers before division
+            row := to_integer(unsigned(pixel_y)) / 64;
+            col := to_integer(unsigned(pixel_x)) / 64;
+            IF (row MOD 2) = (col MOD 2) THEN
+               rgb_reg <= x"FFF"; -- White color
             ELSE
-               rgb_reg <= (OTHERS => '0'); -- Black square
+               rgb_reg <= x"000"; -- Black color
             END IF;
          ELSE
-            rgb_reg <= (OTHERS => '0'); -- Background color (black)
+            rgb_reg <= (OTHERS => '0');
          END IF;
-      ELSE
-         rgb_reg <= (OTHERS => '0');
       END IF;
    END PROCESS;
+   vgaRed <= rgb_reg(11 DOWNTO 8);
+   vgaGreen <= rgb_reg(7 DOWNTO 4);
+   vgaBlue <= rgb_reg(3 DOWNTO 0);
+
+END arch;

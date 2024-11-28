@@ -32,7 +32,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity chess_top is
-    Port ( dads : in STD_LOGIC);
+    Port ( sadsfg : in STD_LOGIC);
 end chess_top;
 
 architecture Behavioral of chess_top is

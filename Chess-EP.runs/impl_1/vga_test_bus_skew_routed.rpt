@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date         : Thu Nov 28 09:27:48 2024
+| Date         : Thu Nov 28 11:01:51 2024
 | Host         : pop-os running 64-bit Pop!_OS 22.04 LTS
 | Command      : report_bus_skew -warn_on_violation -file vga_test_bus_skew_routed.rpt -pb vga_test_bus_skew_routed.pb -rpx vga_test_bus_skew_routed.rpx
 | Design       : vga_test
