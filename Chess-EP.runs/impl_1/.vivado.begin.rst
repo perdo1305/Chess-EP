@@ -1,30 +1,35 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="132345" HostCore="8" HostMemory="14248328">
+    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="100861" HostCore="8" HostMemory="14248332">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="139985" HostCore="8" HostMemory="14248328">
+    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="108723" HostCore="8" HostMemory="14248332">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="151062" HostCore="8" HostMemory="14248328">
+    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="118375" HostCore="8" HostMemory="14248332">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="159848" HostCore="8" HostMemory="14248328">
+    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="124352" HostCore="8" HostMemory="14248332">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="166508" HostCore="8" HostMemory="14248328">
+    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="130349" HostCore="8" HostMemory="14248332">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="179259" HostCore="8" HostMemory="14248328">
+    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="141423" HostCore="8" HostMemory="14248332">
+    </Process>
+</ProcessHandle>
+<?xml version="1.0"?>
+<ProcessHandle Version="1" Minor="0">
+    <Process Command="vivado" Owner="pedroferreira" Host="pop-os" Pid="148746" HostCore="8" HostMemory="14248332">
     </Process>
 </ProcessHandle>
