@@ -76,7 +76,7 @@ BEGIN
                rgb_reg <= (OTHERS => '0'); -- Black square
             END IF;
          ELSE
-            rgb_reg <= "100110000100"; -- Brown border color color
+            rgb_reg <= "100110000100"; -- Brown border color colo
          END IF;
       ELSE
          rgb_reg <= (OTHERS => '0');
