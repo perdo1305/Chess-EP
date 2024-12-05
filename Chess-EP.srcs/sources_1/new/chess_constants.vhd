@@ -20,9 +20,6 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY chess_constants IS
-    
-END chess_constants;
 
 
 PACKAGE chess_constants IS
