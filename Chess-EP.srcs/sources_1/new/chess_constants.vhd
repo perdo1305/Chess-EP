@@ -25,17 +25,12 @@ ENTITY chess_constants IS
 END chess_constants;
 
 
+PACKAGE chess_constants IS
+    -- Define the type for the piece art
+    TYPE art_array IS ARRAY (0 TO 31, 0 TO 31) OF STD_LOGIC;
 
-
-
-
-
-ARCHITECTURE Behavioral OF chess_constants IS
-
-
-    --  Pieces --
-    type art_array is array (0 to 31, 0 to 31) of std_logic;
-    
+    -- Declare the piece constants
+   
     
     constant pawn : art_array := (
     (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -74,7 +69,7 @@ ARCHITECTURE Behavioral OF chess_constants IS
 
 
 constant Bishop : art_array := (
-        (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+    (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
     (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
     (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
     (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -283,6 +278,14 @@ constant Empety : art_array := (
     (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
     (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 );
+
+END PACKAGE chess_constants;
+
+
+
+
+
+ARCHITECTURE Behavioral OF chess_constants IS
 
 
     -- Constants for piece encoding
