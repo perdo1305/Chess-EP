@@ -1,5 +1,5 @@
 namespace eval ::optrace {
-  variable script "/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/impl_1/vga_test.tcl"
+  variable script "C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/impl_1/vga_test.tcl"
   variable category "vivado_impl"
 }
 
@@ -104,9 +104,8 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 2
-  set_param xicom.use_bs_reader 1
-  set_param runs.launchOptions { -jobs 8  }
+  set_param chipscope.maxJobs 3
+  set_param runs.launchOptions { -jobs 12  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a35tcpg236-1
   set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
@@ -114,17 +113,17 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.cache/wt [current_project]
-  set_property parent.project_path /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.xpr [current_project]
-  set_property ip_output_repo /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.cache/ip [current_project]
+  set_property webtalk.parent_dir C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.cache/wt [current_project]
+  set_property parent.project_path C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.xpr [current_project]
+  set_property ip_output_repo C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/vga_test.dcp
-  read_ip -quiet /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  add_files -quiet C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1/vga_test.dcp
+  read_ip -quiet C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 OPTRACE "read constraints: implementation" START { }
-  read_xdc /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc
+  read_xdc C:/Xilinx/EEC_EP/projeto/Chess-EP/basys3_master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version     : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date             : Sat Nov 30 13:46:39 2024
-| Host             : pop-os running 64-bit Pop!_OS 22.04 LTS
+| Tool Version     : Vivado v.2024.1.2 (win64) Build 5164865 Thu Sep  5 14:37:11 MDT 2024
+| Date             : Thu Dec  5 11:11:31 2024
+| Host             : Bruno_Laptop running 64-bit major release  (build 9200)
 | Command          : report_power -file vga_test_power_routed.rpt -pb vga_test_power_summary_routed.pb -rpx vga_test_power_routed.rpx
 | Design           : vga_test
 | Device           : xc7a35tcpg236-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.177        |
+| Total On-Chip Power (W)  | 0.172        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.105        |
+| Dynamic (W)              | 0.100        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.1         |
@@ -53,16 +53,15 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      244 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      154 |     20800 |            0.74 |
-|   CARRY4       |    <0.001 |       33 |      8150 |            0.40 |
+| Slice Logic    |    <0.001 |       66 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       32 |     20800 |            0.15 |
 |   Register     |    <0.001 |       23 |     41600 |            0.06 |
-|   Others       |     0.000 |        4 |       --- |             --- |
-| Signals        |    <0.001 |      168 |       --- |             --- |
+|   Others       |     0.000 |        3 |       --- |             --- |
+| Signals        |    <0.001 |       41 |       --- |             --- |
 | PLL            |     0.099 |        1 |         5 |           20.00 |
-| I/O            |     0.005 |       16 |       106 |           15.09 |
+| I/O            |    <0.001 |       16 |       106 |           15.09 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.177 |          |           |                 |
+| Total          |     0.172 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +71,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.020 |       0.010 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.019 |       0.010 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.063 |       0.050 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -140,13 +139,12 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-----------------+-----------+
-| Name            | Power (W) |
-+-----------------+-----------+
-| vga_test        |     0.105 |
-|   clock_unit    |     0.100 |
-|     inst        |     0.100 |
-|   vga_sync_unit |     0.001 |
-+-----------------+-----------+
++--------------+-----------+
+| Name         | Power (W) |
++--------------+-----------+
+| vga_test     |     0.100 |
+|   clock_unit |     0.100 |
+|     inst     |     0.100 |
++--------------+-----------+
 
 

@@ -15,13 +15,18 @@ def bmp_to_binary_matrix_and_save(file_path):
     # Invert values because '1' in PIL monochrome means black, we want '1' to mean white
     binary_matrix = 1 - binary_array
     
-    # Save the binary matrix to a text file
+    # Save the binary matrix in the requested format
     txt_file_path = os.path.splitext(file_path)[0] + ".txt"
-    np.savetxt(txt_file_path, binary_matrix, fmt='%d', delimiter='')
+    with open(txt_file_path, 'w') as f:
+        formatted_lines = [
+            f"    ({', '.join(map(str, row))}),"
+            for row in binary_matrix
+        ]
+        f.write("\n".join(formatted_lines))
     print(f"Binary matrix saved to {txt_file_path}")
 
     return binary_matrix
 
 # Example usage
-bmp_file = "Rook.bmp"  # Replace with your BMP file path
+bmp_file = "empety.bmp"  # Replace with your BMP file path
 binary_matrix = bmp_to_binary_matrix_and_save(bmp_file)
