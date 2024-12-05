@@ -50,43 +50,33 @@ BEGIN
    PROCESS (pixel_x, pixel_y, video_on)
       VARIABLE square_x, square_y : INTEGER;
       VARIABLE adjusted_x, adjusted_y : INTEGER;
-      CONSTANT square_size : INTEGER := 64;
-      -- Constants for screen and board dimensions
+      CONSTANT square_size : INTEGER := 60; -- Square size of 60x60 pixels
+      -- Screen and board dimensions
       CONSTANT screen_width : INTEGER := 640;
       CONSTANT screen_height : INTEGER := 480;
-      CONSTANT squares_count : INTEGER := 8; -- Number of squares in one row/column
-
+      CONSTANT squares_count : INTEGER := 8; -- 8 squares per row/column
       CONSTANT board_size : INTEGER := square_size * squares_count;
       CONSTANT board_start_x : INTEGER := (screen_width - board_size) / 2; -- Center horizontally
       CONSTANT board_start_y : INTEGER := (screen_height - board_size) / 2; -- Center vertically
-
    BEGIN
       IF video_on = '1' THEN
          -- Adjust pixel positions relative to the board's start position
          adjusted_x := to_integer(unsigned(pixel_x)) - board_start_x;
          adjusted_y := to_integer(unsigned(pixel_y)) - board_start_y;
-
          -- Check if the pixel is within the chessboard area
          IF adjusted_x >= 0 AND adjusted_x < board_size AND
             adjusted_y >= 0 AND adjusted_y < board_size THEN
             -- Determine which square the pixel is in
             square_x := adjusted_x / square_size;
             square_y := adjusted_y / square_size;
-
-            -- Draw border around the chessboard
-            IF square_x = 0 OR square_x = (squares_count - 1) OR
-               square_y = 0 OR square_y = (squares_count - 1) THEN
-               rgb_reg <= "100110010100"; -- Brown border color
+            -- Draw the chessboard pattern without border
+            IF (square_x + square_y) MOD 2 = 0 THEN
+               rgb_reg <= (OTHERS => '1'); -- White square
             ELSE
-               -- Draw the chessboard pattern
-               IF (square_x + square_y) MOD 2 = 0 THEN
-                  rgb_reg <= (OTHERS => '1'); -- White square
-               ELSE
-                  rgb_reg <= (OTHERS => '0'); -- Black square
-               END IF;
+               rgb_reg <= (OTHERS => '0'); -- Black square
             END IF;
          ELSE
-            rgb_reg <= (OTHERS => '0'); -- Background color
+            rgb_reg <= "100110000100"; -- Brown border color color
          END IF;
       ELSE
          rgb_reg <= (OTHERS => '0');

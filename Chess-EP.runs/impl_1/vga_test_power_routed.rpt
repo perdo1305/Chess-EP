@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
-| Date             : Sat Nov 30 13:46:39 2024
+| Date             : Thu Dec  5 11:28:32 2024
 | Host             : pop-os running 64-bit Pop!_OS 22.04 LTS
 | Command          : report_power -file vga_test_power_routed.rpt -pb vga_test_power_summary_routed.pb -rpx vga_test_power_routed.rpx
 | Design           : vga_test
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.177        |
+| Total On-Chip Power (W)  | 0.175        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.105        |
+| Dynamic (W)              | 0.103        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.1         |
@@ -53,16 +53,16 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      244 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      154 |     20800 |            0.74 |
-|   CARRY4       |    <0.001 |       33 |      8150 |            0.40 |
+| Slice Logic    |    <0.001 |      220 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      137 |     20800 |            0.66 |
+|   CARRY4       |    <0.001 |       29 |      8150 |            0.36 |
 |   Register     |    <0.001 |       23 |     41600 |            0.06 |
 |   Others       |     0.000 |        4 |       --- |             --- |
-| Signals        |    <0.001 |      168 |       --- |             --- |
+| Signals        |    <0.001 |      148 |       --- |             --- |
 | PLL            |     0.099 |        1 |         5 |           20.00 |
-| I/O            |     0.005 |       16 |       106 |           15.09 |
+| I/O            |     0.003 |       16 |       106 |           15.09 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.177 |          |           |                 |
+| Total          |     0.175 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -140,13 +140,12 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-----------------+-----------+
-| Name            | Power (W) |
-+-----------------+-----------+
-| vga_test        |     0.105 |
-|   clock_unit    |     0.100 |
-|     inst        |     0.100 |
-|   vga_sync_unit |     0.001 |
-+-----------------+-----------+
++--------------+-----------+
+| Name         | Power (W) |
++--------------+-----------+
+| vga_test     |     0.103 |
+|   clock_unit |     0.100 |
+|     inst     |     0.100 |
++--------------+-----------+
 
 
