@@ -1,13 +1,21 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
+<<<<<<< HEAD
 	<Run Id="synth_1" LaunchDir="/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
 	<Run Id="impl_1" LaunchDir="/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+=======
+	<Run Id="synth_1" LaunchDir="C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="impl_1" LaunchDir="C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+>>>>>>> origin/perdu
 		<Parent Id="synth_1"/>
 	</Run>
 	<Parameters>
 		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
 		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+<<<<<<< HEAD
 		<Parameter Name="general.ignorePathLengthChecks" Val="true" Type="bool"/>
+=======
+>>>>>>> origin/perdu
 		<Parameter Name="general.shortenLongPath" Val="true" Type="bool"/>
 	</Parameters>
 	<ProductInfo Name="vivado"/>
