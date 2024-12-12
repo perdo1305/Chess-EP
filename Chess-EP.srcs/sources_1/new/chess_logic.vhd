@@ -17,10 +17,8 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -31,13 +29,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity chess_logic is
-    Port ( d : in STD_LOGIC);
-end chess_logic;
+ENTITY chess_logic IS
+    PORT (d : IN STD_LOGIC);
+END chess_logic;
 
-architecture Behavioral of chess_logic is
+ARCHITECTURE Behavioral OF chess_logic IS
 
-begin
-
-
-end Behavioral;
+BEGIN
+END Behavioral;

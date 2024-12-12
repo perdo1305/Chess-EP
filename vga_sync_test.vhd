@@ -1,6 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
+USE WORK.chess_constants.ALL;
 
 ENTITY vga_test IS
    PORT (
@@ -50,14 +51,16 @@ BEGIN
    PROCESS (pixel_x, pixel_y, video_on)
       VARIABLE square_x, square_y : INTEGER;
       VARIABLE adjusted_x, adjusted_y : INTEGER;
-      CONSTANT square_size : INTEGER := 60; -- Square size of 60x60 pixels
+      VARIABLE piece_x, piece_y : INTEGER;
+      VARIABLE piece_pixel : STD_LOGIC;
+      CONSTANT square_size : INTEGER := 60;
       -- Screen and board dimensions
       CONSTANT screen_width : INTEGER := 640;
       CONSTANT screen_height : INTEGER := 480;
-      CONSTANT squares_count : INTEGER := 8; -- 8 squares per row/column
+      CONSTANT squares_count : INTEGER := 8;
       CONSTANT board_size : INTEGER := square_size * squares_count;
-      CONSTANT board_start_x : INTEGER := (screen_width - board_size) / 2; -- Center horizontally
-      CONSTANT board_start_y : INTEGER := (screen_height - board_size) / 2; -- Center vertically
+      CONSTANT board_start_x : INTEGER := (screen_width - board_size) / 2;
+      CONSTANT board_start_y : INTEGER := (screen_height - board_size) / 2;
    BEGIN
       IF video_on = '1' THEN
          -- Adjust pixel positions relative to the board's start position
@@ -75,8 +78,23 @@ BEGIN
             ELSE
                rgb_reg <= (OTHERS => '0'); -- Black square
             END IF;
+
+            -- Draw piece if present on this square
+            IF square_x = 3 AND square_y = 3 THEN -- Example position
+               -- Calculate position within the square
+               piece_x := adjusted_x MOD square_size;
+               piece_y := adjusted_y MOD square_size;
+               -- Ensure indices are within 0 to 31
+               IF piece_x >= 0 AND piece_x < 32 AND piece_y >= 0 AND piece_y < 32 THEN
+                  -- Get the pixel value from the piece array
+                  piece_pixel := Pawn(piece_y, piece_x);
+                  IF piece_pixel = '1' THEN
+                     rgb_reg <= "111100000000"; -- Red color for the piece
+                  END IF;
+               END IF;
+            END IF;
          ELSE
-            rgb_reg <= "100110000100"; -- Brown border color colo
+            rgb_reg <= "100110000100"; -- Brown border color color
          END IF;
       ELSE
          rgb_reg <= (OTHERS => '0');
