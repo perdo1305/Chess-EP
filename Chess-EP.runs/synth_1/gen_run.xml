@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1734000512" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
-  <File Type="RDS-DCP" Name="vga_test.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="vga_test_utilization_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1734607466" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
   <File Type="PA-TCL" Name="vga_test.tcl"/>
-  <File Type="RDS-UTIL" Name="vga_test_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="vga_test_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="vga_test_reports.tcl"/>
   <File Type="RDS-RDS" Name="vga_test.vds"/>
+  <File Type="RDS-UTIL" Name="vga_test_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="vga_test_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="vga_test.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="vga_test_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="vga_test_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/chess_constants.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/vga_sync.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -22,6 +19,13 @@
     </File>
     <File Path="$PPRDIR/vga_sync_test.vhd">
       <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/chess_constants.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -47,9 +51,11 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/debounce.vhd">
+    <File Path="$PSRCDIR/sources_1/imports/Chess-EP/debounce.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/debounce.vhd"/>
+        <Attr Name="ImportTime" Val="1727948225"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
