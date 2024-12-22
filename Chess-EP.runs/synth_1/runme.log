@@ -1,62 +1,445 @@
 
 *** Running vivado
-    with args -log vga_test.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_test.tcl
+    with args -log chess_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source chess_top.tcl
 
 
 ****** Vivado v2024.1 (64-bit)
   **** SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
   **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
   **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-  **** Start of session at: Thu Dec 12 10:40:00 2024
+  **** Start of session at: Sun Dec 22 16:49:44 2024
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
-source vga_test.tcl -notrace
-create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1364.121 ; gain = 9.930 ; free physical = 1338 ; free virtual = 19400
+source chess_top.tcl -notrace
+create_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1418.602 ; gain = 0.023 ; free physical = 1917 ; free virtual = 19602
 Command: read_checkpoint -auto_incremental -incremental /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
-Command: synth_design -top vga_test -part xc7a35tcpg236-1
+Command: synth_design -top chess_top -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
-WARNING: [Vivado_Tcl 4-1809] The reference checkpoint is from an old version of Vivado; A full resynthesis flow will be run
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Device 21-9227] Part: xc7a35tcpg236-1 does not have CEAM library.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 151383
+INFO: [Synth 8-7075] Helper process launched with PID 130122
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2128.656 ; gain = 413.715 ; free physical = 380 ; free virtual = 18475
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2128.387 ; gain = 412.715 ; free physical = 896 ; free virtual = 18584
 ---------------------------------------------------------------------------------
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-10095] type 'std_ulogic' does not match with the integer literal [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_constants.vhd:29]
-ERROR: [Synth 8-439] module 'vga_test' not found
+INFO: [Synth 8-638] synthesizing module 'chess_top' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:57]
+INFO: [Synth 8-638] synthesizing module 'chess_logic' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:42]
+WARNING: [Synth 8-614] signal 'cursor_reg' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:132]
+WARNING: [Synth 8-614] signal 'move_is_legal' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:132]
+INFO: [Synth 8-256] done synthesizing module 'chess_logic' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:42]
+INFO: [Synth 8-638] synthesizing module 'display_interface' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:42]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-129586-pop-os/realtime/clk_wiz_0_stub.v:6' bound to instance 'clock_unit' of component 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:61]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-129586-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-129586-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'vga_sync' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'vga_sync' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'display_interface' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'chess_top' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:57]
+WARNING: [Synth 8-3848] Net board_out_addr in module/entity chess_logic does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:30]
+WARNING: [Synth 8-3848] Net board_out_piece in module/entity chess_logic does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:31]
+WARNING: [Synth 8-3848] Net state in module/entity chess_logic does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:36]
+WARNING: [Synth 8-3848] Net MemOE in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:27]
+WARNING: [Synth 8-3848] Net MemWR in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:28]
+WARNING: [Synth 8-3848] Net RamCS in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:29]
+WARNING: [Synth 8-3848] Net FlashCS in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:30]
+WARNING: [Synth 8-3848] Net QuadSpiFlashCS in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:31]
+WARNING: [Synth 8-3848] Net board_input in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:61]
+WARNING: [Synth 8-7129] Port BOARD[255] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[254] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[253] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[252] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[251] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[250] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[249] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[248] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[247] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[246] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[245] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[244] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[243] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[242] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[241] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[240] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[239] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[238] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[237] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[236] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[235] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[234] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[233] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[232] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[231] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[230] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[229] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[228] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[227] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[226] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[225] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[224] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[223] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[222] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[221] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[220] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[219] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[218] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[217] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[216] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[215] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[214] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[213] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[212] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[211] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[210] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[209] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[208] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[207] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[206] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[205] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[204] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[203] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[202] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[201] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[200] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[199] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[198] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[197] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[196] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[195] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[194] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[193] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[192] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[191] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[190] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[189] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[188] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[187] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[186] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[185] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[184] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[183] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[182] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[181] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[180] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[179] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[178] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[177] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[176] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[175] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[174] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[173] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[172] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[171] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[170] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[169] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[168] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[167] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[166] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[165] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[164] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[163] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[162] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[161] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[160] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[159] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[158] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[157] in module display_interface is either unconnected or has no load
+WARNING: [Synth 8-7129] Port BOARD[156] in module display_interface is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2205.594 ; gain = 490.652 ; free physical = 610 ; free virtual = 18433
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2207.355 ; gain = 491.684 ; free physical = 736 ; free virtual = 18426
 ---------------------------------------------------------------------------------
-RTL Elaboration failed
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2225.168 ; gain = 509.496 ; free physical = 747 ; free virtual = 18437
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2225.168 ; gain = 509.496 ; free physical = 747 ; free virtual = 18437
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2225.168 ; gain = 0.000 ; free physical = 747 ; free virtual = 18436
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'display_interface_inst/clock_unit'
+Finished Parsing XDC File [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'display_interface_inst/clock_unit'
+Parsing XDC File [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:7]
+WARNING: [Vivado 12-584] No ports matched 'sw[2]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:14]
+WARNING: [Vivado 12-584] No ports matched 'sw[3]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:15]
+WARNING: [Vivado 12-584] No ports matched 'sw[4]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:16]
+WARNING: [Vivado 12-584] No ports matched 'sw[5]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:17]
+WARNING: [Vivado 12-584] No ports matched 'sw[6]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:18]
+WARNING: [Vivado 12-584] No ports matched 'sw[7]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:19]
+WARNING: [Vivado 12-584] No ports matched 'sw[8]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:20]
+WARNING: [Vivado 12-584] No ports matched 'sw[9]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:21]
+WARNING: [Vivado 12-584] No ports matched 'sw[10]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:22]
+WARNING: [Vivado 12-584] No ports matched 'sw[11]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:23]
+WARNING: [Vivado 12-584] No ports matched 'reset'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:67]
+WARNING: [Vivado 12-584] No ports matched 'R[0]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:129]
+WARNING: [Vivado 12-584] No ports matched 'R[1]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:130]
+WARNING: [Vivado 12-584] No ports matched 'R[2]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:131]
+WARNING: [Vivado 12-584] No ports matched 'R[3]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:132]
+WARNING: [Vivado 12-584] No ports matched 'B[0]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:133]
+WARNING: [Vivado 12-584] No ports matched 'B[1]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:134]
+WARNING: [Vivado 12-584] No ports matched 'B[2]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:135]
+WARNING: [Vivado 12-584] No ports matched 'B[3]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:136]
+WARNING: [Vivado 12-584] No ports matched 'G[0]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:137]
+WARNING: [Vivado 12-584] No ports matched 'G[1]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:138]
+WARNING: [Vivado 12-584] No ports matched 'G[2]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:139]
+WARNING: [Vivado 12-584] No ports matched 'G[3]'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:140]
+WARNING: [Vivado 12-584] No ports matched 'Hsync'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:143]
+WARNING: [Vivado 12-584] No ports matched 'Vsync'. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc:144]
+Finished Parsing XDC File [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/chess_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/basys3_master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/chess_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/chess_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2367.949 ; gain = 0.000 ; free physical = 755 ; free virtual = 18442
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2367.949 ; gain = 0.000 ; free physical = 755 ; free virtual = 18442
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2367.949 ; gain = 652.277 ; free physical = 754 ; free virtual = 18441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 754 ; free virtual = 18441
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for ClkPort. (constraint file  /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ClkPort. (constraint file  /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
+Applied set_property KEEP_HIERARCHY = SOFT for display_interface_inst/clock_unit. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 754 ; free virtual = 18441
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'chess_logic'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 initial |                              000 |                              000
+               piece_sel |                              001 |                              001
+              piece_move |                              010 |                              010
+         write_new_piece |                              011 |                              011
+         erase_old_piece |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'chess_logic'
+WARNING: [Synth 8-327] inferring latch for variable 'player_to_move_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:142]
+WARNING: [Synth 8-327] inferring latch for variable 'player_to_move_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:112]
+WARNING: [Synth 8-327] inferring latch for variable 'selected_reg_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:144]
+WARNING: [Synth 8-327] inferring latch for variable 'selected_reg_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:86]
+WARNING: [Synth 8-327] inferring latch for variable 'board_out_en_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:91]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 775 ; free virtual = 18466
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   31 Bit       Adders := 1     
+	   2 Input   11 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 2     
+	   2 Input    6 Bit       Adders := 1     
+	   3 Input    4 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 2     
++---Registers : 
+	               10 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input   31 Bit        Muxes := 1     
+	   3 Input   12 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 3     
+	   5 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 6     
+	   5 Input    1 Bit        Muxes := 4     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[5]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[4]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[3]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[2]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[1]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[0]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[5]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[4]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[3]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[2]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[1]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[0]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/board_out_en_reg) is unused and will be removed from module chess_top.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 712 ; free virtual = 18407
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 621 ; free virtual = 18318
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 617 ; free virtual = 18314
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 610 ; free virtual = 18306
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 679 ; free virtual = 18353
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 679 ; free virtual = 18353
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin chess_logic_inst/player_to_move with 1st driver pin 'chess_logic_inst/player_to_move_reg__0/Q' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:112]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin chess_logic_inst/player_to_move with 2nd driver pin 'chess_logic_inst/player_to_move_reg/Q' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:142]
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        1|Failed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 679 ; free virtual = 18353
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 679 ; free virtual = 18353
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 679 ; free virtual = 18353
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 679 ; free virtual = 18353
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |clk_wiz |     1|
+|2     |BUFG    |     1|
+|3     |CARRY4  |    29|
+|4     |LUT1    |    17|
+|5     |LUT2    |    30|
+|6     |LUT3    |    28|
+|7     |LUT4    |    23|
+|8     |LUT5    |    30|
+|9     |LUT6    |    46|
+|10    |FDCE    |    26|
+|11    |LD      |     2|
+|12    |IBUF    |     2|
+|13    |OBUF    |    16|
+|14    |OBUFT   |     8|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.953 ; gain = 660.281 ; free physical = 679 ; free virtual = 18353
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 2 critical warnings and 28 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2375.953 ; gain = 517.500 ; free physical = 679 ; free virtual = 18353
+Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 2375.961 ; gain = 660.281 ; free physical = 682 ; free virtual = 18356
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2375.961 ; gain = 0.000 ; free physical = 792 ; free virtual = 18466
+INFO: [Netlist 29-17] Analyzing 31 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2431.980 ; gain = 0.000 ; free physical = 981 ; free virtual = 18655
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 2 instances were transformed.
+  LD => LDCE: 2 instances
+
+Synth Design complete | Checksum: af135d3e
 INFO: [Common 17-83] Releasing license: Synthesis
-11 Infos, 1 Warnings, 0 Critical Warnings and 21 Errors encountered.
-synth_design failed
-ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
-INFO: [Common 17-206] Exiting Vivado at Thu Dec 12 10:40:28 2024...
+37 Infos, 157 Warnings, 2 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:49 . Memory (MB): peak = 2431.980 ; gain = 1013.379 ; free physical = 982 ; free virtual = 18655
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1886.041; main = 1563.920; forked = 373.784
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3431.422; main = 2431.984; forked = 1055.465
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2455.992 ; gain = 0.000 ; free physical = 982 ; free virtual = 18655
+INFO: [Common 17-1381] The checkpoint '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/chess_top.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file chess_top_utilization_synth.rpt -pb chess_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Dec 22 16:50:50 2024...

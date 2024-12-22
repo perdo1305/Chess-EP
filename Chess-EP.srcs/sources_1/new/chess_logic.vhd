@@ -26,7 +26,7 @@ ENTITY chess_logic IS
         CLK : IN STD_LOGIC;
         RESET : IN STD_LOGIC;
         BtnL, BtnU, BtnR, BtnD, BtnC : IN STD_LOGIC;
-        board_input : IN STD_LOGIC_VECTOR(255 DOWNTO 0);
+        board_input : IN STD_LOGIC_VECTOR(255 DOWNTO 0); 
         board_out_addr : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
         board_out_piece : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         board_change_en_wire : OUT STD_LOGIC;
