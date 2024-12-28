@@ -37,7 +37,8 @@ entity chess_top is
         reset : in STD_LOGIC;        -- Reset signal
         sw : in STD_LOGIC;           -- Input switch signal
         db_level : out STD_LOGIC;    -- Debounced switch level
-        db_tick : out STD_LOGIC      -- Debounced switch tick
+        db_tick : out STD_LOGIC;      -- Debounced switch tick
+        led : out std_logic
     );
 end chess_top;
 
@@ -46,7 +47,6 @@ architecture Behavioral of chess_top is
     -- Internal signals for debounce connection
     signal sw_deb_level : STD_LOGIC;
     signal sw_deb_tick : STD_LOGIC;
-
     -- Component declaration
     component debounce
         Port (
@@ -71,7 +71,8 @@ begin
         );
 
     -- Assign internal signals to top-level ports
-    db_level <= sw_deb_level;
+    --db_level <= sw_deb_level;
     db_tick <= sw_deb_tick;
+    led <= sw_deb_level;
 
 end Behavioral;
