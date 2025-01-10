@@ -17,15 +17,18 @@
 -- Additional Comments:
 -- 
 ----------------------------------------------------------------------------------
-
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
+library types_pkg;
+use types_pkg.types_pkg.all;
+
 ENTITY display_interface IS
+
     PORT (
         clk, reset : IN STD_LOGIC;
-        BOARD : IN STD_LOGIC_VECTOR(255 DOWNTO 0);
+        BOARD : IN board_input;
         CURSOR_ADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
         SELECT_ADDR : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
         SELECT_EN : IN STD_LOGIC;
@@ -41,9 +44,14 @@ END display_interface;
 
 ARCHITECTURE Behavioral OF display_interface IS
 
+    TYPE board_input IS ARRAY (0 TO 63) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL BOARD_ARRAY : board_input;
+
     SIGNAL pixel_color : STD_LOGIC_VECTOR(11 DOWNTO 0);
     SIGNAL video_on_signal : STD_LOGIC;
     SIGNAL clock, locked : STD_LOGIC;
+
+    SIGNAL board_vector : STD_LOGIC_VECTOR(255 DOWNTO 0);
 
     SIGNAL pixel_x, pixel_y : STD_LOGIC_VECTOR(9 DOWNTO 0);
 
@@ -71,6 +79,15 @@ ARCHITECTURE Behavioral OF display_interface IS
         );
     END COMPONENT;
 
+    FUNCTION to_board_array(flat_vector : STD_LOGIC_VECTOR(255 DOWNTO 0)) RETURN board_input IS
+        VARIABLE result : board_input;
+    BEGIN
+        FOR i IN 0 TO 63 LOOP
+            result(i) := flat_vector(i * 4 + 3 DOWNTO i * 4);
+        END LOOP;
+        RETURN result;
+    END FUNCTION;
+
 BEGIN
     -- Instantiate clock wizard circuit
     clock_unit : clk_wiz_0
@@ -94,6 +111,7 @@ BEGIN
         VARIABLE square_x, square_y : INTEGER;
         VARIABLE adjusted_x, adjusted_y : INTEGER;
         VARIABLE piece_x, piece_y : INTEGER;
+        VARIABLE piece_type : STD_LOGIC_VECTOR(3 DOWNTO 0);
         CONSTANT square_size : INTEGER := 60;
         CONSTANT screen_width : INTEGER := 640;
         CONSTANT screen_height : INTEGER := 480;
@@ -113,15 +131,25 @@ BEGIN
                 square_x := adjusted_x / square_size;
                 square_y := adjusted_y / square_size;
 
+                --extract piece type from the board
+                piece_type := BOARD_ARRAY(square_x + square_y * squares_count);
+
                 IF (square_x + square_y) MOD 2 = 0 THEN
                     pixel_color <= (OTHERS => '1'); -- White square
                 ELSE
                     pixel_color <= (OTHERS => '0'); -- Black square
                 END IF;
-                
+
                 -- Draw pieces on the board
                 piece_x := adjusted_x MOD square_size;
                 piece_y := adjusted_y MOD square_size;
+
+                IF piece_type = WHITE_PAWN THEN
+                    IF piece_x >= 10 AND piece_x < 50 AND piece_y >= 10 AND piece_y < 50 THEN
+                        --green      
+                        pixel_color <= "000000111000"; -- Green pawn color
+                    END IF;
+                END IF;
 
             ELSE
                 pixel_color <= "100110000100"; -- Brown border color color

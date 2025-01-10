@@ -21,12 +21,15 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
+library types_pkg;
+use types_pkg.types_pkg.all;
+
 ENTITY chess_logic IS
     PORT (
         CLK : IN STD_LOGIC;
         RESET : IN STD_LOGIC;
         BtnL, BtnU, BtnR, BtnD, BtnC : IN STD_LOGIC;
-        board_input : IN STD_LOGIC_VECTOR(255 DOWNTO 0); 
+        board_input : board_input;
         board_out_addr : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
         board_out_piece : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         board_change_en_wire : OUT STD_LOGIC;
@@ -92,14 +95,6 @@ BEGIN
 
     move_is_legal <= move_is_legal_internal; -- Assign the internal signal to the output port signal move_is_legal_internal : std_logic;
 
-    -- Decode board input into 64 squares
-    PROCESS (board_input)
-    BEGIN
-        FOR i IN 0 TO 63 LOOP
-            board(i) <= board_input((i + 1) * 4 - 1 DOWNTO i * 4);
-        END LOOP;
-    END PROCESS;
-
     -- Cursor and selected contents
     cursor_contents <= board(to_integer(unsigned(cursor_reg)));
     selected_contents <= board(to_integer(unsigned(selected_reg)));
@@ -161,11 +156,11 @@ BEGIN
 
             WHEN ERASE_OLD_PIECE =>
                 next_state <= PIECE_SEL;
-                IF player_to_move = '1' THEN
-                    player_to_move <= '0';
-                ELSE
-                    player_to_move <= '1';
-                END IF;
+--                IF player_to_move = '1' THEN
+--                    player_to_move <= '0';
+--                ELSE
+--                    player_to_move <= '1';
+--                END IF;
 
             WHEN OTHERS =>
                 next_state <= INITIAL;
