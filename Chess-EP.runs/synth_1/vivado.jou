@@ -3,11 +3,11 @@
 # SW Build 5164865 on Thu Sep  5 14:37:11 MDT 2024
 # IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
 # SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
-# Start of session at: Sat Dec 28 12:43:50 2024
-# Process ID: 17668
+# Start of session at: Wed Jan 15 08:30:26 2025
+# Process ID: 4908
 # Current directory: C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1
-# Command line: vivado.exe -log chess_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source chess_top.tcl
-# Log file: C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1/chess_top.vds
+# Command line: vivado.exe -log kb_test.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kb_test.tcl
+# Log file: C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1/kb_test.vds
 # Journal file: C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1\vivado.jou
 # Running On        :Bruno_Laptop
 # Platform          :Windows Server 2016 or Windows 10
@@ -17,8 +17,8 @@
 # CPU Physical cores:6
 # CPU Logical cores :12
 # Host memory       :16977 MB
-# Swap memory       :9663 MB
-# Total Virtual     :26641 MB
-# Available Virtual :7112 MB
+# Swap memory       :10200 MB
+# Total Virtual     :27178 MB
+# Available Virtual :10061 MB
 #-----------------------------------------------------------
-source chess_top.tcl -notrace
+source kb_test.tcl -notrace

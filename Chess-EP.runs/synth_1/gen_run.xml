@@ -1,18 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1735389824" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
-  <File Type="PA-TCL" Name="chess_top.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="chess_top_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="chess_top_reports.tcl"/>
-  <File Type="RDS-RDS" Name="chess_top.vds"/>
-  <File Type="RDS-UTIL" Name="chess_top_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="chess_top_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="chess_top.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="chess_top_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="chess_top_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1736929809" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
+  <File Type="PA-TCL" Name="kb_test.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="kb_test_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="kb_test_reports.tcl"/>
+  <File Type="RDS-RDS" Name="kb_test.vds"/>
+  <File Type="RDS-UTIL" Name="kb_test_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="kb_test_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="kb_test.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="kb_test_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="kb_test_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/fifo.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/ps2_rx.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/ps2_rx.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/kb_code.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/kb_code.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_rx.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_tx.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/key2ascii.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/key2ascii.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/kb_test.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/kb_test.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/Chess-EP/debounce.vhd">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/debounce.vhd"/>
         <Attr Name="ImportTime" Val="1727948225"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -21,6 +78,52 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/chess_top.vhd">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/fifo.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/fifo.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/mod_m_counter.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/mod_m_counter.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/uart_rx.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_rx.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/uart_tx.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_tx.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/uart.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -62,7 +165,8 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="chess_top"/>
+      <Option Name="TopModule" Val="kb_test"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">

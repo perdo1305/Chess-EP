@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log chess_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source chess_top.tcl
+EAStep vivado -log kb_test.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source kb_test.tcl

@@ -1,93 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1735389824">
-  <File Type="ROUTE-PWR" Name="chess_top_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="chess_top.tcl"/>
-  <File Type="ROUTE-PWR-SUM" Name="chess_top_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="chess_top_reports.tcl"/>
-  <File Type="OPT-RQA-PB" Name="chess_top_rqa_opted.pb"/>
-  <File Type="BITSTR-MMI" Name="chess_top.mmi"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="chess_top_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="chess_top_timing_summary_init.rpt"/>
-  <File Type="OPT-TIMING" Name="chess_top_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="chess_top_opt.dcp"/>
-  <File Type="OPT-DRC" Name="chess_top_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="chess_top.hwdef"/>
-  <File Type="PWROPT-DCP" Name="chess_top_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="chess_top_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="chess_top_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="chess_top_placed.dcp"/>
-  <File Type="PLACE-IO" Name="chess_top_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="chess_top_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="chess_top_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="chess_top_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="chess_top_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="chess_top_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="chess_top_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BG-BIN" Name="chess_top.bin"/>
-  <File Type="PLACE-TIMING" Name="chess_top_timing_summary_placed.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="chess_top_power_routed.rpx"/>
-  <File Type="PLACE-RQA-PB" Name="chess_top_rqa_placed.pb"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="chess_top_postplace_pwropt.dcp"/>
-  <File Type="BITSTR-MSK" Name="chess_top.msk"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="chess_top_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="chess_top_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="chess_top_drc_physopted.rpt"/>
-  <File Type="BITSTR-RBT" Name="chess_top.rbt"/>
-  <File Type="PHYSOPT-TIMING" Name="chess_top_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="chess_top_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="chess_top_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="chess_top_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="chess_top_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="chess_top_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="chess_top_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="chess_top_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="chess_top_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="chess_top_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-RQS-PB" Name="chess_top_rqs_routed.pb"/>
-  <File Type="ROUTE-STATUS" Name="chess_top_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="chess_top_route_status.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="chess_top_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="chess_top_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="chess_top_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="chess_top_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="chess_top_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="chess_top_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="chess_top_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="chess_top_bus_skew_routed.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="chess_top_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="chess_top_postroute_physopt_bb.dcp"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1736929809">
+  <File Type="ROUTE-PWR" Name="kb_test_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="kb_test.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="kb_test_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="kb_test_reports.tcl"/>
+  <File Type="OPT-RQA-PB" Name="kb_test_rqa_opted.pb"/>
+  <File Type="BITSTR-MMI" Name="kb_test.mmi"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="kb_test_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="kb_test_timing_summary_init.rpt"/>
+  <File Type="OPT-TIMING" Name="kb_test_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="kb_test_opt.dcp"/>
+  <File Type="OPT-DRC" Name="kb_test_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="kb_test.hwdef"/>
+  <File Type="PWROPT-DCP" Name="kb_test_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="kb_test_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="kb_test_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="kb_test_placed.dcp"/>
+  <File Type="PLACE-IO" Name="kb_test_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="kb_test_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="kb_test_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="kb_test_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="kb_test_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="kb_test_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="kb_test_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="kb_test.bin"/>
+  <File Type="PLACE-TIMING" Name="kb_test_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="kb_test_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="kb_test_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="kb_test_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="kb_test.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="kb_test_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="kb_test_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="kb_test_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="kb_test.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="kb_test_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="kb_test_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="kb_test_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="kb_test_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="kb_test_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="kb_test_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="kb_test_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="kb_test_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="kb_test_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="kb_test_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="kb_test_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="kb_test_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="kb_test_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="kb_test_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="kb_test_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="kb_test_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="kb_test_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="kb_test_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="kb_test_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="kb_test_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="kb_test_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="kb_test_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="kb_test_postroute_physopt_bb.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING" Name="chess_top_timing_summary_postroute_physopted.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="chess_top_timing_summary_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="chess_top_timing_summary_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="chess_top_bus_skew_postroute_physopted.rpt"/>
-  <File Type="BG-BIT" Name="chess_top.bit"/>
+  <File Type="BG-BIT" Name="kb_test.bit"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="chess_top_bus_skew_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="chess_top_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-NKY" Name="chess_top.nky"/>
-  <File Type="BITSTR-BMM" Name="chess_top_bd.bmm"/>
-  <File Type="PDI-FILE" Name="chess_top.pdi"/>
-  <File Type="BOOT-PDI-FILE" Name="chess_top_boot.pdi"/>
-  <File Type="PL-PDI-FILE" Name="chess_top_pld.pdi"/>
-  <File Type="RCFI_FILE" Name="chess_top.rcfi"/>
-  <File Type="CFI_FILE" Name="chess_top.cfi"/>
-  <File Type="RNPI_FILE" Name="chess_top.rnpi"/>
-  <File Type="NPI_FILE" Name="chess_top.npi"/>
-  <File Type="RBD_FILE" Name="chess_top.rbd"/>
+  <File Type="BITSTR-NKY" Name="kb_test.nky"/>
+  <File Type="BITSTR-BMM" Name="kb_test_bd.bmm"/>
+  <File Type="PDI-FILE" Name="kb_test.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="kb_test_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="kb_test_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="kb_test.rcfi"/>
+  <File Type="CFI_FILE" Name="kb_test.cfi"/>
+  <File Type="RNPI_FILE" Name="kb_test.rnpi"/>
+  <File Type="NPI_FILE" Name="kb_test.npi"/>
+  <File Type="RBD_FILE" Name="kb_test.rbd"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="chess_top.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="chess_top.sysdef"/>
-  <File Type="BG-BGN" Name="chess_top.bgn"/>
-  <File Type="BG-DRC" Name="chess_top.drc"/>
-  <File Type="RDI-RDI" Name="chess_top.vdi"/>
+  <File Type="BITSTR-LTX" Name="kb_test.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="kb_test.sysdef"/>
+  <File Type="BG-BGN" Name="kb_test.bgn"/>
+  <File Type="BG-DRC" Name="kb_test.drc"/>
+  <File Type="RDI-RDI" Name="kb_test.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="ROUTE-RQS" Name="chess_top_routed.rqs"/>
-  <File Type="POSTROUTE-PHYSOPT-RQS" Name="chess_top_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS" Name="kb_test_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="kb_test_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
   <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/fifo.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/ps2_rx.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/ps2_rx.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/kb_code.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/kb_code.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_rx.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_tx.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/key2ascii.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/key2ascii.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/kb_test.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/kb_test.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/Chess-EP/debounce.vhd">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="ImportPath" Val="$PPRDIR/debounce.vhd"/>
         <Attr Name="ImportTime" Val="1727948225"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -96,6 +153,52 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/chess_top.vhd">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/fifo.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/fifo.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/mod_m_counter.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/mod_m_counter.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/uart_rx.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_rx.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/uart_tx.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_tx.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/part2_PS2/uart.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart.vhd"/>
+        <Attr Name="ImportTime" Val="1730369005"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -137,7 +240,8 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="chess_top"/>
+      <Option Name="TopModule" Val="kb_test"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
