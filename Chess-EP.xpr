@@ -112,24 +112,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_rx.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_tx.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/part2_PS2/key2ascii.vhd">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/key2ascii.vhd"/>
@@ -142,6 +124,13 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/kb_test.vhd"/>
           <Attr Name="ImportTime" Val="1730369005"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../sources/lab6_sources/lab6_sources/part2_PS2/uart_rx.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
