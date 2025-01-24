@@ -21,8 +21,8 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-library types_pkg;
-use types_pkg.types_pkg.all;
+LIBRARY types_pkg;
+USE types_pkg.types_pkg.ALL;
 
 ENTITY display_interface IS
 
@@ -79,6 +79,7 @@ ARCHITECTURE Behavioral OF display_interface IS
         );
     END COMPONENT;
 
+    --converts a flat vector to a 2D array
     FUNCTION to_board_array(flat_vector : STD_LOGIC_VECTOR(255 DOWNTO 0)) RETURN board_input IS
         VARIABLE result : board_input;
     BEGIN
@@ -143,13 +144,6 @@ BEGIN
                 -- Draw pieces on the board
                 piece_x := adjusted_x MOD square_size;
                 piece_y := adjusted_y MOD square_size;
-
-                IF piece_type = WHITE_PAWN THEN
-                    IF piece_x >= 10 AND piece_x < 50 AND piece_y >= 10 AND piece_y < 50 THEN
-                        --green      
-                        pixel_color <= "000000111000"; -- Green pawn color
-                    END IF;
-                END IF;
 
             ELSE
                 pixel_color <= "100110000100"; -- Brown border color color

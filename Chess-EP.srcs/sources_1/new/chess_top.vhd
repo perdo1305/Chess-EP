@@ -20,8 +20,8 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-library types_pkg;
-use types_pkg.types_pkg.all;
+LIBRARY types_pkg;
+USE types_pkg.types_pkg.ALL;
 
 ENTITY chess_top IS
     PORT (
@@ -50,7 +50,7 @@ ENTITY chess_top IS
 END ENTITY chess_top;
 
 ARCHITECTURE Behavioral OF chess_top IS
-    
+
     SIGNAL board : board_input;
     SIGNAL Reset : STD_LOGIC;
     SIGNAL board_out_addr : STD_LOGIC_VECTOR(5 DOWNTO 0);
@@ -76,23 +76,24 @@ BEGIN
     -- Chess Logic Module
     chess_logic_inst : ENTITY work.chess_logic
         PORT MAP(
-            CLK => ClkPort,
-            RESET => Reset,
-            BtnL => BtnL,
-            BtnU => BtnU,
-            BtnD => BtnD,
-            BtnR => BtnR,
-            BtnC => BtnC,
-            board_input => board,
-            board_out_addr => board_out_addr,
-            board_out_piece => board_out_piece,
-            board_change_en_wire => board_change_en,
-            cursor_addr => cursor_addr,
-            selected_addr => selected_addr,
-            hilite_selected_square => hilite_selected,
-            state => state,
-            move_is_legal => move_is_legal,
-            is_in_initial_state => is_initial
+            CLK => ClkPort, -- clock signal to synchronize
+            RESET => Reset, -- reset signal
+            BtnL => BtnL, -- left button (INPUT)
+            BtnU => BtnU, -- up button (INPUT)
+            BtnD => BtnD, -- down button (INPUT)
+            BtnR => BtnR, -- right button (INPUT)
+            BtnC => BtnC, -- center button (INPUT)
+            board_input => board, -- pass the current board state (INPUT)
+
+            board_out_addr => board_out_addr, -- address of the piece to be updated (OUTPUT)
+            board_out_piece => board_out_piece, -- piece that is being moved to the board_out_addr (OUTPUT) 
+            board_change_en_wire => board_change_en, -- enable signal for updating the board (OUTPUT)
+            cursor_addr => cursor_addr, -- address of the cursor position (OUTPUT)
+            selected_addr => selected_addr, -- represents the current selected piece (OUTPUT)
+            hilite_selected_square => hilite_selected, -- highlight the selected square (OUTPUT)
+            state => state, -- current state of the state machine 0101(OUTPUT)
+            move_is_legal => move_is_legal, -- signal to indicate if the move is legal (OUTPUT)
+            is_in_initial_state => is_initial -- signal to indicate if the state machine is in the initial state (OUTPUT)
         );
 
     -- Display Interface Module
@@ -111,6 +112,56 @@ BEGIN
             G => G,
             B => B
         );
+
+    PROCESS (ClkPort, Reset)
+    BEGIN
+        IF rising_edge(ClkPort) THEN
+            IF Reset = '0' THEN
+                IF board_change_en = '1' THEN
+                    board(to_integer(unsigned(board_out_addr))) <= board_out_piece;
+                END IF;
+            END IF;
+            IF is_initial = '1' THEN
+                -- WHITE PIECES
+                board(0) <= "0100"; -- White Rook
+                board(1) <= "0010"; -- White Knight
+                board(2) <= "0011"; -- White Bishop
+                board(3) <= "0110"; -- White King
+                board(4) <= "0101"; -- White Queen
+                board(5) <= "0011"; -- White Bishop
+                board(6) <= "0010"; -- White Knight
+                board(7) <= "0100"; -- White Rook
+
+                board(8) <= "0001"; -- White Pawn
+                board(9) <= "0001"; -- White Pawn
+                board(10) <= "0001"; -- White Pawn
+                board(11) <= "0001"; -- White Pawn
+                board(12) <= "0001"; -- White Pawn
+                board(13) <= "0001"; -- White Pawn
+                board(14) <= "0001"; -- White Pawn
+                board(15) <= "0001"; -- White Pawn
+
+                -- BLACK PIECES
+                board(48) <= "1100"; -- Black Rook
+                board(49) <= "1010"; -- Black Knight
+                board(50) <= "1011"; -- Black Bishop
+                board(51) <= "1110"; -- Black King
+                board(52) <= "1101"; -- Black Queen
+                board(53) <= "1011"; -- Black Bishop
+                board(54) <= "1010"; -- Black Knight
+                board(55) <= "1100"; -- Black Rook
+                
+                board(56) <= "1001"; -- Black Pawn
+                board(57) <= "1001"; -- Black Pawn
+                board(58) <= "1001"; -- Black Pawn
+                board(59) <= "1001"; -- Black Pawn
+                board(60) <= "1001"; -- Black Pawn
+                board(61) <= "1001"; -- Black Pawn
+                board(62) <= "1001"; -- Black Pawn
+                board(63) <= "1001"; -- Black Pawn
+            END IF;
+        END IF;
+    END PROCESS;
 
     -- Map RGB signals to VGA outputs
     R <= vga_R;

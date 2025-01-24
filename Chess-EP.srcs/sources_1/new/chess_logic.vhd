@@ -21,8 +21,8 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-library types_pkg;
-use types_pkg.types_pkg.all;
+LIBRARY types_pkg;
+USE types_pkg.types_pkg.ALL;
 
 ENTITY chess_logic IS
     PORT (
@@ -156,11 +156,11 @@ BEGIN
 
             WHEN ERASE_OLD_PIECE =>
                 next_state <= PIECE_SEL;
---                IF player_to_move = '1' THEN
---                    player_to_move <= '0';
---                ELSE
---                    player_to_move <= '1';
---                END IF;
+                --                IF player_to_move = '1' THEN
+                --                    player_to_move <= '0';
+                --                ELSE
+                --                    player_to_move <= '1';
+                --                END IF;
 
             WHEN OTHERS =>
                 next_state <= INITIAL;
