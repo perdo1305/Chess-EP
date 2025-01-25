@@ -96,7 +96,7 @@ BEGIN
     move_is_legal <= move_is_legal_internal; -- Assign the internal signal to the output port signal move_is_legal_internal : std_logic;
 
     -- Cursor and selected contents
-    cursor_contents <= board(to_integer(unsigned(cursor_reg)));
+    cursor_contents <= board(to_integer(unsigned(cursor_reg))); 
     selected_contents <= board(to_integer(unsigned(selected_reg)));
 
     -- State machine process

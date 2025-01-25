@@ -150,7 +150,7 @@ BEGIN
                 board(53) <= "1011"; -- Black Bishop
                 board(54) <= "1010"; -- Black Knight
                 board(55) <= "1100"; -- Black Rook
-                
+
                 board(56) <= "1001"; -- Black Pawn
                 board(57) <= "1001"; -- Black Pawn
                 board(58) <= "1001"; -- Black Pawn

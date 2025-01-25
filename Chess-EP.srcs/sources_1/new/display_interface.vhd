@@ -70,6 +70,21 @@ ARCHITECTURE Behavioral OF display_interface IS
     CONSTANT BLACK_QUEEN : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1101";
     CONSTANT BLACK_KING : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1110";
 
+    CONSTANT RGB_OUTSIDE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110000100";
+    CONSTANT RGB_CURSOR : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111100000000";
+    CONSTANT RGB_SELECTED : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000011110000";
+    CONSTANT RGB_DARK_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000000000000";
+    CONSTANT RGB_LIGHT_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111";
+    CONSTANT RGB_BLACK_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000000000000";
+    CONSTANT RGB_WHITE_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111";
+
+    SIGNAL piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SIGNAL piece_color : STD_LOGIC; -- 0=white, 1=black
+    SIGNAL rom_row : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 0-7
+    SIGNAL piece_pixels : STD_LOGIC_VECTOR(7 DOWNTO 0); -- 8 pixels/row
+
+    SIGNAL counter_row, counter_col : STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SIGNAL art_x, art_y : INTEGER;
     COMPONENT clk_wiz_0
         PORT (
             clk_in1 : IN STD_LOGIC;
@@ -107,12 +122,20 @@ BEGIN
             p_tick => OPEN, pixel_x => pixel_x, pixel_y => pixel_y
         );
 
-    -- Drawing process
+    -- Connect to ROM
+    piece_rom_unit : ENTITY work.piece_rom
+        PORT MAP(
+            clk => clock,
+            piece_type => piece_type,
+            row_addr => rom_row,
+            pixel_data => piece_pixels
+        );
+
     PROCESS (pixel_x, pixel_y, video_on_signal)
         VARIABLE square_x, square_y : INTEGER;
         VARIABLE adjusted_x, adjusted_y : INTEGER;
         VARIABLE piece_x, piece_y : INTEGER;
-        VARIABLE piece_type : STD_LOGIC_VECTOR(3 DOWNTO 0);
+        VARIABLE local_piece_type : STD_LOGIC_VECTOR(3 DOWNTO 0);
         CONSTANT square_size : INTEGER := 60;
         CONSTANT screen_width : INTEGER := 640;
         CONSTANT screen_height : INTEGER := 480;
@@ -121,37 +144,58 @@ BEGIN
         CONSTANT board_start_x : INTEGER := (screen_width - board_size) / 2;
         CONSTANT board_start_y : INTEGER := (screen_height - board_size) / 2;
     BEGIN
-        IF video_on_signal = '1' THEN
-            -- Adjust pixel positions relative to the board's start position
-            adjusted_x := to_integer(unsigned(pixel_x)) - board_start_x;
-            adjusted_y := to_integer(unsigned(pixel_y)) - board_start_y;
-            -- Check if the pixel is within the chessboard area
-            IF adjusted_x >= 0 AND adjusted_x < board_size AND
-                adjusted_y >= 0 AND adjusted_y < board_size THEN
-                -- Determine which square the pixel is in
-                square_x := adjusted_x / square_size;
-                square_y := adjusted_y / square_size;
-
-                --extract piece type from the board
-                piece_type := BOARD_ARRAY(square_x + square_y * squares_count);
-
-                IF (square_x + square_y) MOD 2 = 0 THEN
-                    pixel_color <= (OTHERS => '1'); -- White square
-                ELSE
-                    pixel_color <= (OTHERS => '0'); -- Black square
-                END IF;
-
-                -- Draw pieces on the board
-                piece_x := adjusted_x MOD square_size;
-                piece_y := adjusted_y MOD square_size;
-
+        IF rising_edge(clk) THEN
+            IF reset = '1' THEN
+                pixel_color <= RGB_OUTSIDE;
             ELSE
-                pixel_color <= "100110000100"; -- Brown border color color
+                IF video_on_signal = '1' THEN
+                    -- Adjust pixel positions
+                    adjusted_x := to_integer(unsigned(pixel_x)) - board_start_x;
+                    adjusted_y := to_integer(unsigned(pixel_y)) - board_start_y;
+
+                    IF adjusted_x >= 0 AND adjusted_x < board_size AND
+                        adjusted_y >= 0 AND adjusted_y < board_size THEN
+
+                        -- Determine square
+                        square_x := adjusted_x / square_size;
+                        square_y := adjusted_y / square_size;
+
+                        -- Compute art_x, art_y for reading piece_pixels
+                        art_x <= (adjusted_x MOD square_size) * 8 / square_size;
+                        art_y <= (adjusted_y MOD square_size) * 8 / square_size;
+
+                        -- Update ROM inputs
+                        rom_row <= STD_LOGIC_VECTOR(to_unsigned(art_y, 3));
+                        local_piece_type := BOARD_ARRAY(square_y * squares_count + square_x);
+                        piece_type <= local_piece_type(2 DOWNTO 0); -- for the ROM
+
+                        -- Choose background color
+                        IF (square_x + square_y) MOD 2 = 0 THEN
+                            pixel_color <= RGB_LIGHT_SQ;
+                        ELSE
+                            pixel_color <= RGB_DARK_SQ;
+                        END IF;
+
+                        -- If piece_pixels indicates a filled pixel, draw piece color
+                        IF piece_pixels(7 - art_x) = '1' THEN
+                            IF local_piece_type(3) = '1' THEN
+                                pixel_color <= RGB_BLACK_PIECE;
+                            ELSE
+                                pixel_color <= RGB_WHITE_PIECE;
+                            END IF;
+                        END IF;
+
+                    ELSE
+                        pixel_color <= RGB_OUTSIDE;
+                    END IF;
+                ELSE
+                    pixel_color <= (OTHERS => '0');
+                END IF;
             END IF;
-        ELSE
-            pixel_color <= (OTHERS => '0');
         END IF;
     END PROCESS;
+
+    -- ...existing code for assigning R, G, B...
 
     R <= pixel_color(11 DOWNTO 8);
     G <= pixel_color(7 DOWNTO 4);
