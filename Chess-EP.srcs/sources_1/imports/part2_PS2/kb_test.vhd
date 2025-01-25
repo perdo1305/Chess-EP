@@ -17,6 +17,7 @@ architecture arch of kb_test is
    signal kb_not_empty, kb_buf_empty: std_logic;
    signal key_code, ascii_code: std_logic_vector(7 downto 0);
    signal led_s: std_logic; -- Internal LED toggle signal
+   signal up_signal, down_signal, left_signal, right_signal: std_logic;
 begin
 
    -- Keyboard Code Unit
@@ -45,6 +46,7 @@ begin
    process(clk, reset)
    begin
       if reset = '1' then
+    -- if falling_edge(clk) then
          -- Initialize outputs and internal states on reset
          up <= '0';
          down <= '0';
@@ -53,27 +55,35 @@ begin
          center <= '0';
          led_s <= '0';
          led <= '0';
+         up_signal <= '0';
+         down_signal <= '0';
+         left_signal <= '0';
+         right_signal <= '0';
+         
+         
       elsif rising_edge(clk) then
          -- Default: Clear directional outputs on each clock cycle
-         up <= '0';
-         down <= '0';
-         left <= '0';
-         right <= '0';
+       
          center <= '0';
 
+            
+            
          if kb_not_empty = '1' then
             -- Decode valid key codes
             case key_code is
                when x"75" => -- Scan code for 'Up Arrow'
-                  up <= '1';
+                up_signal <= not up_signal;
+                --  up <= '1';
                when x"72" => -- Scan code for 'Down Arrow'
-                  down <= '1';
+                    down_signal <= not down_signal;
                when x"6B" => -- Scan code for 'Left Arrow'
-                  left <= '1';
+                  --left <= '1';
+                  left_signal <= not left_signal;
                when x"74" => -- Scan code for 'Right Arrow'
+                 right_signal <= not right_signal;
                   right <= '1';
                when x"5A" => -- Scan code for 'Enter' (Center key)
-                  center <= '1';
+                  --center <= '1';
                   led_s <= not led_s; -- Toggle LED state
                when x"F0" =>
                   -- Ignore break codes (do nothing)
@@ -81,11 +91,23 @@ begin
                when others =>
                   -- Ignore other unrecognized scan codes
                   null;
-            end case;
-         end if;
-
+              end case;
+          else
+            up_signal <= '0';
+            down_signal <= '0';
+            left_signal <= '0';
+            right_signal <= '0';
+            led_s <= '0';
+       end if;
+ 
          -- Map internal LED signal to output
          led <= led_s;
+         up <= up_signal;
+         down <= down_signal;
+         left <= left_signal;
+         right <= right_signal;     
+         
       end if;
+      
    end process;
 end arch;
