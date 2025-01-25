@@ -102,6 +102,7 @@ begin
  
          -- Map internal LED signal to output
          led <= led_s;
+         center <= led_s;
          up <= up_signal;
          down <= down_signal;
          left <= left_signal;
