@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1737809742" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1737810177" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
   <File Type="PA-TCL" Name="kb_test.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="kb_test_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="kb_test_reports.tcl"/>

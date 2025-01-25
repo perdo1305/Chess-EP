@@ -3,8 +3,8 @@
 # SW Build 5164865 on Thu Sep  5 14:37:11 MDT 2024
 # IP Build 5164407 on Fri Sep  6 08:18:11 MDT 2024
 # SharedData Build 5164864 on Thu Sep 05 13:09:09 MDT 2024
-# Start of session at: Sat Jan 25 12:55:53 2025
-# Process ID: 8092
+# Start of session at: Sat Jan 25 13:03:03 2025
+# Process ID: 31532
 # Current directory: C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1
 # Command line: vivado.exe -log kb_test.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source kb_test.tcl
 # Log file: C:/Xilinx/EEC_EP/projeto/Chess-EP/Chess-EP.runs/synth_1/kb_test.vds
@@ -19,6 +19,6 @@
 # Host memory       :16977 MB
 # Swap memory       :11811 MB
 # Total Virtual     :28788 MB
-# Available Virtual :7642 MB
+# Available Virtual :7840 MB
 #-----------------------------------------------------------
 source kb_test.tcl -notrace
