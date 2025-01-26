@@ -142,23 +142,23 @@ BEGIN
                 board(15) <= "0001"; -- White Pawn
 
                 -- BLACK PIECES
-                board(48) <= "1100"; -- Black Rook
-                board(49) <= "1010"; -- Black Knight
-                board(50) <= "1011"; -- Black Bishop
-                board(51) <= "1110"; -- Black King
-                board(52) <= "1101"; -- Black Queen
-                board(53) <= "1011"; -- Black Bishop
-                board(54) <= "1010"; -- Black Knight
-                board(55) <= "1100"; -- Black Rook
+                board(48) <= "1001"; -- Black Rook
+                board(49) <= "1001"; -- Black Knight
+                board(50) <= "1001"; -- Black Bishop
+                board(51) <= "1001"; -- Black King
+                board(52) <= "1001"; -- Black Queen
+                board(53) <= "1001"; -- Black Bishop
+                board(54) <= "1001"; -- Black Knight
+                board(55) <= "1001"; -- Black Rook
 
-                board(56) <= "1001"; -- Black Pawn
-                board(57) <= "1001"; -- Black Pawn
-                board(58) <= "1001"; -- Black Pawn
-                board(59) <= "1001"; -- Black Pawn
-                board(60) <= "1001"; -- Black Pawn
-                board(61) <= "1001"; -- Black Pawn
-                board(62) <= "1001"; -- Black Pawn
-                board(63) <= "1001"; -- Black Pawn
+                board(56) <= "1100"; -- Black Pawn
+                board(57) <= "1010"; -- Black Pawn
+                board(58) <= "1011"; -- Black Pawn
+                board(59) <= "1110"; -- Black Pawn
+                board(60) <= "1101"; -- Black Pawn
+                board(61) <= "1011"; -- Black Pawn
+                board(62) <= "1010"; -- Black Pawn
+                board(63) <= "1100"; -- Black Pawn
             END IF;
         END IF;
     END PROCESS;

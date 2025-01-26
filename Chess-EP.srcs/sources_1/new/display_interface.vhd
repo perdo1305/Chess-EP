@@ -44,14 +44,13 @@ END display_interface;
 
 ARCHITECTURE Behavioral OF display_interface IS
 
-    TYPE board_input IS ARRAY (0 TO 63) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
+    --TYPE board_input IS ARRAY (0 TO 63) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL BOARD_ARRAY : board_input;
 
+    SIGNAL board_vector : STD_LOGIC_VECTOR(255 DOWNTO 0);
     SIGNAL pixel_color : STD_LOGIC_VECTOR(11 DOWNTO 0);
     SIGNAL video_on_signal : STD_LOGIC;
     SIGNAL clock, locked : STD_LOGIC;
-
-    SIGNAL board_vector : STD_LOGIC_VECTOR(255 DOWNTO 0);
 
     SIGNAL pixel_x, pixel_y : STD_LOGIC_VECTOR(9 DOWNTO 0);
 
@@ -70,18 +69,21 @@ ARCHITECTURE Behavioral OF display_interface IS
     CONSTANT BLACK_QUEEN : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1101";
     CONSTANT BLACK_KING : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1110";
 
-    CONSTANT RGB_OUTSIDE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110000100";
+    CONSTANT RGB_OUTSIDE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110000100"; -- dark green
     CONSTANT RGB_CURSOR : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111100000000";
     CONSTANT RGB_SELECTED : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000011110000";
     CONSTANT RGB_DARK_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000000000000";
     CONSTANT RGB_LIGHT_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111";
-    CONSTANT RGB_BLACK_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000000000000";
-    CONSTANT RGB_WHITE_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111";
+    CONSTANT RGB_BLACK_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110011001"; -- grey
+    CONSTANT RGB_WHITE_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111011"; -- yellowish white
 
     SIGNAL piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL piece_color : STD_LOGIC; -- 0=white, 1=black
     SIGNAL rom_row : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 0-7
     SIGNAL piece_pixels : STD_LOGIC_VECTOR(7 DOWNTO 0); -- 8 pixels/row
+
+    SIGNAL art_x_delayed : INTEGER;
+    SIGNAL art_y_delayed : INTEGER;
 
     SIGNAL counter_row, counter_col : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL art_x, art_y : INTEGER;
@@ -130,66 +132,76 @@ BEGIN
             row_addr => rom_row,
             pixel_data => piece_pixels
         );
-
-    PROCESS (pixel_x, pixel_y, video_on_signal)
+    BOARD_ARRAY <= BOARD;
+    PROCESS (clock)
         VARIABLE square_x, square_y : INTEGER;
         VARIABLE adjusted_x, adjusted_y : INTEGER;
-        VARIABLE piece_x, piece_y : INTEGER;
         VARIABLE local_piece_type : STD_LOGIC_VECTOR(3 DOWNTO 0);
         CONSTANT square_size : INTEGER := 60;
-        CONSTANT screen_width : INTEGER := 640;
-        CONSTANT screen_height : INTEGER := 480;
-        CONSTANT squares_count : INTEGER := 8;
-        CONSTANT board_size : INTEGER := square_size * squares_count;
-        CONSTANT board_start_x : INTEGER := (screen_width - board_size) / 2;
-        CONSTANT board_start_y : INTEGER := (screen_height - board_size) / 2;
+        CONSTANT board_size : INTEGER := 480; -- 8x60
     BEGIN
-        IF rising_edge(clk) THEN
+        IF rising_edge(clock) THEN
             IF reset = '1' THEN
                 pixel_color <= RGB_OUTSIDE;
             ELSE
                 IF video_on_signal = '1' THEN
-                    -- Adjust pixel positions
-                    adjusted_x := to_integer(unsigned(pixel_x)) - board_start_x;
-                    adjusted_y := to_integer(unsigned(pixel_y)) - board_start_y;
 
-                    IF adjusted_x >= 0 AND adjusted_x < board_size AND
-                        adjusted_y >= 0 AND adjusted_y < board_size THEN
+                    -- Adjust pixel positions to board origin (80, 0)
+                    adjusted_x := to_integer(unsigned(pixel_x)) - 80;
+                    adjusted_y := to_integer(unsigned(pixel_y)) - 0;
 
-                        -- Determine square
+                    -- Inside board area?
+                    IF adjusted_x >= 0 AND adjusted_x < 480 AND
+                        adjusted_y >= 0 AND adjusted_y < 480 THEN
+
+                        -- Calculate square indices (0-7)
                         square_x := adjusted_x / square_size;
                         square_y := adjusted_y / square_size;
 
-                        -- Compute art_x, art_y for reading piece_pixels
-                        art_x <= (adjusted_x MOD square_size) * 8 / square_size;
-                        art_y <= (adjusted_y MOD square_size) * 8 / square_size;
-
-                        -- Update ROM inputs
-                        rom_row <= STD_LOGIC_VECTOR(to_unsigned(art_y, 3));
-                        local_piece_type := BOARD_ARRAY(square_y * squares_count + square_x);
-                        piece_type <= local_piece_type(2 DOWNTO 0); -- for the ROM
-
-                        -- Choose background color
+                        -- Background color (light/dark square)
                         IF (square_x + square_y) MOD 2 = 0 THEN
                             pixel_color <= RGB_LIGHT_SQ;
                         ELSE
                             pixel_color <= RGB_DARK_SQ;
                         END IF;
 
-                        -- If piece_pixels indicates a filled pixel, draw piece color
-                        IF piece_pixels(7 - art_x) = '1' THEN
-                            IF local_piece_type(3) = '1' THEN
-                                pixel_color <= RGB_BLACK_PIECE;
-                            ELSE
-                                pixel_color <= RGB_WHITE_PIECE;
-                            END IF;
+                        art_x_delayed <= art_x;
+                        art_y_delayed <= art_y;
+
+                        -- Calculate ROM row/column
+                        art_x <= ((adjusted_x MOD square_size) * 8) / square_size;
+                        art_y <= ((adjusted_y MOD square_size) * 8) / square_size;
+
+                        --update rom inputs
+                        rom_row <= STD_LOGIC_VECTOR(to_unsigned(art_y, 3));
+                        local_piece_type := BOARD_ARRAY(square_y * 8 + square_x);
+                        IF local_piece_type /= EMPTY THEN
+                            piece_type <= STD_LOGIC_VECTOR(unsigned(local_piece_type(2 DOWNTO 0)) - 1); -- Map "0001" (pawn) to 0, "0010" (knight) to 1, etc.
+                        ELSE
+                            piece_type <= (OTHERS => '0'); -- Handle empty squares (optional)
                         END IF;
 
+                        -- Highlight cursor/selected square
+                        --                        IF (square_x & square_y = CURSOR_ADDR) THEN
+                        --                            pixel_color <= RGB_CURSOR;
+                        --                        ELSIF (square_x & square_y = SELECT_ADDR AND SELECT_EN = '1') THEN
+                        --                            pixel_color <= RGB_SELECTED;
+                        --                        END IF;
+                        IF local_piece_type /= EMPTY THEN -- Only draw if square is not empty
+                            --Draw piece pixels (USE delayed art_x due TO ROM latency)
+                            IF piece_pixels(7 - art_x_delayed) = '1' THEN
+                                IF local_piece_type(3) = '1' THEN -- Black piece
+                                    pixel_color <= RGB_BLACK_PIECE;
+                                ELSE -- White piece
+                                    pixel_color <= RGB_WHITE_PIECE;
+                                END IF;
+                            END IF;
+                        END IF;
                     ELSE
-                        pixel_color <= RGB_OUTSIDE;
+                        pixel_color <= RGB_OUTSIDE; -- Outside board
                     END IF;
                 ELSE
-                    pixel_color <= (OTHERS => '0');
+                    pixel_color <= (OTHERS => '0'); -- Blanking period
                 END IF;
             END IF;
         END IF;
