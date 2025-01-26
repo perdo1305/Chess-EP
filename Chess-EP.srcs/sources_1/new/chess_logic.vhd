@@ -96,7 +96,7 @@ BEGIN
     move_is_legal <= move_is_legal_internal; -- Assign the internal signal to the output port signal move_is_legal_internal : std_logic;
 
     -- Cursor and selected contents
-    cursor_contents <= board(to_integer(unsigned(cursor_reg))); 
+    cursor_contents <= board(to_integer(unsigned(cursor_reg)));
     selected_contents <= board(to_integer(unsigned(selected_reg)));
 
     -- State machine process
@@ -105,11 +105,15 @@ BEGIN
         IF RESET = '1' THEN
             current_state <= INITIAL;
             player_to_move <= COLOR_WHITE;
-            cursor_reg <= "110100"; -- White's king pawn
+            cursor_reg <= "000011"; -- White's king pawn
             selected_reg <= (OTHERS => '0');
             board_out_en <= '0';
         ELSIF rising_edge(CLK) THEN
-            current_state <= next_state;
+            IF current_state = INITIAL THEN
+                current_state <= PIECE_SEL; -- Auto-transition out of INITIAL
+            ELSE
+                current_state <= next_state;
+            END IF;
 
             IF BtnL = '1' AND cursor_reg(2 DOWNTO 0) /= "000" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) - 1);

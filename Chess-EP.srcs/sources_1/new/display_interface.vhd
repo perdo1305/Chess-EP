@@ -69,16 +69,17 @@ ARCHITECTURE Behavioral OF display_interface IS
     CONSTANT BLACK_QUEEN : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1101";
     CONSTANT BLACK_KING : STD_LOGIC_VECTOR(3 DOWNTO 0) := "1110";
 
+    -- Color definitions
     CONSTANT RGB_OUTSIDE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110000100"; -- dark green
-    CONSTANT RGB_CURSOR : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111100000000";
-    CONSTANT RGB_SELECTED : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000011110000";
+    CONSTANT RGB_CURSOR : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111110100000"; -- orange
+    CONSTANT RGB_SELECTED : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000011110000"; -- bright green
     CONSTANT RGB_DARK_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000000000000";
     CONSTANT RGB_LIGHT_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111";
     CONSTANT RGB_BLACK_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110011001"; -- grey
     CONSTANT RGB_WHITE_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111011"; -- yellowish white
 
     SIGNAL piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL piece_color : STD_LOGIC; -- 0=white, 1=black
+    SIGNAL piece_color : STD_LOGIC; -- 0-white, 1-black
     SIGNAL rom_row : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 0-7
     SIGNAL piece_pixels : STD_LOGIC_VECTOR(7 DOWNTO 0); -- 8 pixels/row
 
@@ -182,11 +183,12 @@ BEGIN
                         END IF;
 
                         -- Highlight cursor/selected square
-                        --                        IF (square_x & square_y = CURSOR_ADDR) THEN
-                        --                            pixel_color <= RGB_CURSOR;
-                        --                        ELSIF (square_x & square_y = SELECT_ADDR AND SELECT_EN = '1') THEN
-                        --                            pixel_color <= RGB_SELECTED;
-                        --                        END IF;
+                        IF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(CURSOR_ADDR)) THEN
+                            pixel_color <= RGB_CURSOR;
+                        ELSIF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(SELECT_ADDR) AND SELECT_EN = '1') THEN
+                            pixel_color <= RGB_SELECTED;
+                        END IF;
+
                         IF local_piece_type /= EMPTY THEN -- Only draw if square is not empty
                             --Draw piece pixels (USE delayed art_x due TO ROM latency)
                             IF piece_pixels(7 - art_x_delayed) = '1' THEN

@@ -7,12 +7,12 @@
   **** SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
   **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
   **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-  **** Start of session at: Sun Jan 26 02:58:15 2025
+  **** Start of session at: Sun Jan 26 15:00:53 2025
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source chess_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1367.094 ; gain = 8.930 ; free physical = 2290 ; free virtual = 15767
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1367.094 ; gain = 8.930 ; free physical = 2248 ; free virtual = 17047
 Command: read_checkpoint -auto_incremental -incremental /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,19 +26,19 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 1058172
+INFO: [Synth 8-7075] Helper process launched with PID 1134476
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2128.691 ; gain = 412.746 ; free physical = 1175 ; free virtual = 14652
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2128.723 ; gain = 412.746 ; free physical = 872 ; free virtual = 15717
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'chess_top' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:52]
 INFO: [Synth 8-638] synthesizing module 'chess_logic' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:45]
-WARNING: [Synth 8-614] signal 'cursor_reg' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:127]
-WARNING: [Synth 8-614] signal 'move_is_legal' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:127]
+WARNING: [Synth 8-614] signal 'cursor_reg' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:131]
+WARNING: [Synth 8-614] signal 'move_is_legal' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:131]
 INFO: [Synth 8-256] done synthesizing module 'chess_logic' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:45]
 INFO: [Synth 8-638] synthesizing module 'display_interface' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:45]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1057086-pop-os/realtime/clk_wiz_0_stub.v:6' bound to instance 'clock_unit' of component 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:111]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1057086-pop-os/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1057086-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1133680-pop-os/realtime/clk_wiz_0_stub.v:6' bound to instance 'clock_unit' of component 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:112]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1133680-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1133680-pop-os/realtime/clk_wiz_0_stub.v:6]
 INFO: [Synth 8-638] synthesizing module 'vga_sync' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'vga_sync' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
 INFO: [Synth 8-638] synthesizing module 'piece_rom' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/piece_rom.vhd:14]
@@ -48,23 +48,10 @@ INFO: [Synth 8-256] done synthesizing module 'chess_top' (0#1) [/home/pedroferre
 WARNING: [Synth 8-3848] Net board_out_addr in module/entity chess_logic does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:33]
 WARNING: [Synth 8-3848] Net board_out_piece in module/entity chess_logic does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:34]
 WARNING: [Synth 8-3848] Net state in module/entity chess_logic does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:39]
-WARNING: [Synth 8-6014] Unused sequential element art_y_delayed_reg was removed.  [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:169]
+WARNING: [Synth 8-6014] Unused sequential element art_y_delayed_reg was removed.  [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:170]
 WARNING: [Synth 8-3848] Net vga_R in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:67]
 WARNING: [Synth 8-3848] Net vga_G in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:68]
 WARNING: [Synth 8-3848] Net vga_B in module/entity chess_top does not have driver. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:69]
-WARNING: [Synth 8-7129] Port CURSOR_ADDR[5] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CURSOR_ADDR[4] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CURSOR_ADDR[3] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CURSOR_ADDR[2] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CURSOR_ADDR[1] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port CURSOR_ADDR[0] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SELECT_ADDR[5] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SELECT_ADDR[4] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SELECT_ADDR[3] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SELECT_ADDR[2] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SELECT_ADDR[1] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SELECT_ADDR[0] in module display_interface is either unconnected or has no load
-WARNING: [Synth 8-7129] Port SELECT_EN in module display_interface is either unconnected or has no load
 WARNING: [Synth 8-7129] Port board_out_addr[5] in module chess_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port board_out_addr[4] in module chess_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port board_out_addr[3] in module chess_logic is either unconnected or has no load
@@ -152,20 +139,33 @@ WARNING: [Synth 8-7129] Port board_input[17][1] in module chess_logic is either 
 WARNING: [Synth 8-7129] Port board_input[17][0] in module chess_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port board_input[18][3] in module chess_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port board_input[18][2] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[18][1] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[18][0] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[19][3] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[19][2] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[19][1] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[19][0] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[20][3] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[20][2] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[20][1] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[20][0] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[21][3] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[21][2] in module chess_logic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port board_input[21][1] in module chess_logic is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2212.660 ; gain = 496.715 ; free physical = 1052 ; free virtual = 14530
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2212.691 ; gain = 496.715 ; free physical = 747 ; free virtual = 15612
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2227.504 ; gain = 511.559 ; free physical = 1062 ; free virtual = 14540
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2227.535 ; gain = 511.559 ; free physical = 706 ; free virtual = 15559
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2227.504 ; gain = 511.559 ; free physical = 1062 ; free virtual = 14540
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2227.535 ; gain = 511.559 ; free physical = 706 ; free virtual = 15559
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2227.504 ; gain = 0.000 ; free physical = 1062 ; free virtual = 14540
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2227.535 ; gain = 0.000 ; free physical = 700 ; free virtual = 15594
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -178,22 +178,22 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/chess_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2376.254 ; gain = 0.000 ; free physical = 1054 ; free virtual = 14532
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2377.285 ; gain = 0.000 ; free physical = 698 ; free virtual = 15552
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2376.254 ; gain = 0.000 ; free physical = 1054 ; free virtual = 14532
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2377.285 ; gain = 0.000 ; free physical = 698 ; free virtual = 15552
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2376.254 ; gain = 660.309 ; free physical = 1045 ; free virtual = 14523
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2377.285 ; gain = 661.309 ; free physical = 755 ; free virtual = 15609
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1045 ; free virtual = 14523
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 755 ; free virtual = 15609
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -202,25 +202,14 @@ Applied set_property IO_BUFFER_TYPE = NONE for ClkPort. (constraint file  /home/
 Applied set_property CLOCK_BUFFER_TYPE = NONE for ClkPort. (constraint file  /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
 Applied set_property KEEP_HIERARCHY = SOFT for display_interface_inst/clock_unit. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1045 ; free virtual = 14523
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 765 ; free virtual = 15620
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'chess_logic'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                 initial |                              000 |                              000
-               piece_sel |                              001 |                              001
-              piece_move |                              010 |                              010
-         write_new_piece |                              011 |                              011
-         erase_old_piece |                              100 |                              100
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'chess_logic'
-WARNING: [Synth 8-327] inferring latch for variable 'player_to_move_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:107]
-WARNING: [Synth 8-327] inferring latch for variable 'selected_reg_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:139]
+WARNING: [Synth 8-327] inferring latch for variable 'selected_reg_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:143]
 WARNING: [Synth 8-327] inferring latch for variable 'selected_reg_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:89]
+WARNING: [Synth 8-327] inferring latch for variable 'player_to_move_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:107]
 WARNING: [Synth 8-327] inferring latch for variable 'board_out_en_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:94]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1047 ; free virtual = 14526
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 787 ; free virtual = 15660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -242,23 +231,25 @@ Detailed RTL Component Info :
 	               10 Bit    Registers := 2     
 	                6 Bit    Registers := 2     
 	                4 Bit    Registers := 64    
-	                3 Bit    Registers := 2     
+	                3 Bit    Registers := 3     
 	                1 Bit    Registers := 3     
 +---Muxes : 
 	   2 Input   32 Bit        Muxes := 1     
 	   2 Input   31 Bit        Muxes := 1     
-	   2 Input   12 Bit        Muxes := 5     
+	   2 Input   12 Bit        Muxes := 4     
 	   3 Input   12 Bit        Muxes := 1     
+	   4 Input   12 Bit        Muxes := 1     
 	   2 Input   11 Bit        Muxes := 1     
 	   2 Input   10 Bit        Muxes := 2     
 	   2 Input    8 Bit        Muxes := 1     
 	   2 Input    6 Bit        Muxes := 1     
 	   2 Input    5 Bit        Muxes := 2     
-	   2 Input    3 Bit        Muxes := 3     
-	   5 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 2     
+	   7 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 1     
 	   2 Input    1 Bit        Muxes := 70    
-	   7 Input    1 Bit        Muxes := 1     
-	   5 Input    1 Bit        Muxes := 3     
+	   7 Input    1 Bit        Muxes := 2     
+	   6 Input    1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -275,23 +266,11 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-3936] Found unconnected internal register 'art_y_reg' and it is trimmed from '32' to '3' bits. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:169]
+WARNING: [Synth 8-3936] Found unconnected internal register 'art_y_reg' and it is trimmed from '32' to '3' bits. [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:170]
 WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/player_to_move_reg) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[5]) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[4]) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[3]) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[2]) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[1]) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[0]) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[5]__0) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[4]__0) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[3]__0) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[2]__0) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[1]__0) is unused and will be removed from module chess_top.
-WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[0]__0) is unused and will be removed from module chess_top.
 WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/board_out_en_reg) is unused and will be removed from module chess_top.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1029 ; free virtual = 14513
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 758 ; free virtual = 15628
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -312,22 +291,34 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1044 ; free virtual = 14528
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 774 ; free virtual = 15674
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1019 ; free virtual = 14504
+Finished Timing Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 793 ; free virtual = 15694
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin board_change_en with 1st driver pin 'i_382/O' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:92]
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[5]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[4]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[3]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[2]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[1]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[0]) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[5]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[4]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[3]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[2]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[1]__0) is unused and will be removed from module chess_top.
+WARNING: [Synth 8-3332] Sequential element (chess_logic_inst/selected_reg_reg[0]__0) is unused and will be removed from module chess_top.
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin board_change_en with 1st driver pin 'i_41/O' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:92]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin board_change_en with 2nd driver pin 'GND' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:92]
 CRITICAL WARNING: [Synth 8-6858] multi-driven net board_change_en is connected to at least one constant driver which has been preserved, other driver is ignored [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:92]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1002 ; free virtual = 14486
+Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 787 ; free virtual = 15687
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -345,37 +336,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1036 ; free virtual = 14521
+Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 781 ; free virtual = 15692
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1036 ; free virtual = 14521
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 773 ; free virtual = 15684
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1022 ; free virtual = 14506
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 763 ; free virtual = 15675
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1022 ; free virtual = 14506
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 763 ; free virtual = 15674
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1022 ; free virtual = 14506
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 762 ; free virtual = 15673
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1022 ; free virtual = 14506
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 762 ; free virtual = 15673
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -393,45 +384,47 @@ Report Cell Usage:
 |      |Cell    |Count |
 +------+--------+------+
 |1     |clk_wiz |     1|
-|2     |CARRY4  |    60|
-|3     |LUT1    |    30|
-|4     |LUT2    |    55|
-|5     |LUT3    |    32|
-|6     |LUT4    |    59|
+|2     |CARRY4  |    62|
+|3     |LUT1    |    31|
+|4     |LUT2    |    59|
+|5     |LUT3    |    28|
+|6     |LUT4    |    50|
 |7     |LUT5    |    75|
-|8     |LUT6    |    97|
-|9     |FDCE    |    26|
-|10    |FDRE    |    25|
-|11    |IBUF    |     2|
-|12    |OBUF    |    16|
-|13    |OBUFT   |     3|
+|8     |LUT6    |   115|
+|9     |MUXF7   |     1|
+|10    |FDCE    |    30|
+|11    |FDPE    |     2|
+|12    |FDRE    |    28|
+|13    |IBUF    |     6|
+|14    |OBUF    |    16|
+|15    |OBUFT   |     3|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.258 ; gain = 668.312 ; free physical = 1022 ; free virtual = 14506
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.289 ; gain = 669.312 ; free physical = 762 ; free virtual = 15673
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 3 critical warnings and 303 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 2384.258 ; gain = 519.562 ; free physical = 1022 ; free virtual = 14506
-Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:32 . Memory (MB): peak = 2384.266 ; gain = 668.312 ; free physical = 1022 ; free virtual = 14506
+Synthesis finished with 0 errors, 3 critical warnings and 290 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:36 ; elapsed = 00:00:36 . Memory (MB): peak = 2385.289 ; gain = 519.562 ; free physical = 760 ; free virtual = 15671
+Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 2385.297 ; gain = 669.312 ; free physical = 760 ; free virtual = 15671
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2384.266 ; gain = 0.000 ; free physical = 1094 ; free virtual = 14578
-INFO: [Netlist 29-17] Analyzing 60 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2385.297 ; gain = 0.000 ; free physical = 981 ; free virtual = 15892
+INFO: [Netlist 29-17] Analyzing 63 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 5 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2440.285 ; gain = 0.000 ; free physical = 1409 ; free virtual = 14894
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2441.316 ; gain = 0.000 ; free physical = 1036 ; free virtual = 15943
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 2d358df4
+Synth Design complete | Checksum: 501b0451
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 129 Warnings, 3 Critical Warnings and 0 Errors encountered.
+37 Infos, 129 Warnings, 3 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:38 . Memory (MB): peak = 2440.285 ; gain = 1060.316 ; free physical = 1409 ; free virtual = 14893
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1994.396; main = 1555.964; forked = 487.219
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3509.961; main = 2440.289; forked = 1125.699
+synth_design: Time (s): cpu = 00:00:50 ; elapsed = 00:00:46 . Memory (MB): peak = 2441.316 ; gain = 1061.348 ; free physical = 1036 ; free virtual = 15943
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1880.852; main = 1560.694; forked = 378.836
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3432.766; main = 2441.320; forked = 1047.473
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2464.297 ; gain = 0.000 ; free physical = 1409 ; free virtual = 14893
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2465.328 ; gain = 0.000 ; free physical = 1036 ; free virtual = 15943
 INFO: [Common 17-1381] The checkpoint '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/chess_top.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file chess_top_utilization_synth.rpt -pb chess_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Jan 26 02:59:07 2025...
+INFO: [Common 17-206] Exiting Vivado at Sun Jan 26 15:01:53 2025...
