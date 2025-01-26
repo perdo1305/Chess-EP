@@ -30,11 +30,15 @@ ENTITY chess_top IS
         sw : IN STD_LOGIC_VECTOR(1 DOWNTO 0); -- For reset
 
         -- Buttons
-        btnL : IN STD_LOGIC; -- Left
-        btnU : IN STD_LOGIC; -- Up
-        btnD : IN STD_LOGIC; -- Down
-        btnR : IN STD_LOGIC; -- Right
-        btnC : IN STD_LOGIC; -- Center
+        --btnL : IN STD_LOGIC; -- Left
+        --btnU : IN STD_LOGIC; -- Up
+        --btnD : IN STD_LOGIC; -- Down
+        --btnR : IN STD_LOGIC; -- Right
+        --btnC : IN STD_LOGIC; -- Center
+
+        -- PS2
+        ps2d : IN STD_LOGIC; -- PS2 Data
+        ps2c : IN STD_LOGIC; -- PS2 Clock
 
         -- VGA Signals
         Hsync : OUT STD_LOGIC;
@@ -45,7 +49,8 @@ ENTITY chess_top IS
         B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 
         -- LEDs
-        led : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
+        led : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+        kb_leds : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
     );
 END ENTITY chess_top;
 
@@ -78,11 +83,8 @@ BEGIN
         PORT MAP(
             CLK => ClkPort, -- clock signal to synchronize
             RESET => Reset, -- reset signal
-            BtnL => BtnL, -- left button (INPUT)
-            BtnU => BtnU, -- up button (INPUT)
-            BtnD => BtnD, -- down button (INPUT)
-            BtnR => BtnR, -- right button (INPUT)
-            BtnC => BtnC, -- center button (INPUT)
+            ps2d => ps2d, -- PS2 data signal
+            ps2c => ps2c, -- PS2 clock signal
             board_input => board, -- pass the current board state (INPUT)
 
             board_out_addr => board_out_addr, -- address of the piece to be updated (OUTPUT)
@@ -93,7 +95,8 @@ BEGIN
             hilite_selected_square => hilite_selected, -- highlight the selected square (OUTPUT)
             state => state, -- current state of the state machine 0101(OUTPUT)
             move_is_legal => move_is_legal, -- signal to indicate if the move is legal (OUTPUT)
-            is_in_initial_state => is_initial -- signal to indicate if the state machine is in the initial state (OUTPUT)
+            is_in_initial_state => is_initial, -- signal to indicate if the state machine is in the initial state (OUTPUT)
+            kb_leds => kb_leds
         );
 
     -- Display Interface Module

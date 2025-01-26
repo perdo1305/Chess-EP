@@ -28,7 +28,7 @@ ENTITY chess_logic IS
     PORT (
         CLK : IN STD_LOGIC;
         RESET : IN STD_LOGIC;
-        BtnL, BtnU, BtnR, BtnD, BtnC : IN STD_LOGIC;
+        ps2d, ps2c : IN STD_LOGIC; -- PS/2 data and clock
         board_input : board_input;
         board_out_addr : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
         board_out_piece : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -38,7 +38,8 @@ ENTITY chess_logic IS
         hilite_selected_square : OUT STD_LOGIC;
         state : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
         move_is_legal : BUFFER STD_LOGIC;
-        is_in_initial_state : OUT STD_LOGIC
+        is_in_initial_state : OUT STD_LOGIC;
+        kb_leds : out std_logic_vector(4 downto 0)
     );
 END chess_logic;
 
@@ -81,16 +82,34 @@ ARCHITECTURE Behavioral OF chess_logic IS
     SIGNAL cursor_contents, selected_contents : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL h_delta, v_delta : unsigned(3 DOWNTO 0);
     SIGNAL move_is_legal_internal : STD_LOGIC;
+    SIGNAL BtnU, BtnD, BtnL, BtnR, BtnC : STD_LOGIC;
+    SIGNAL keyboard_up, keyboard_down, keyboard_left, keyboard_right, keyboard_center : STD_LOGIC;
+
+    SIGNAL next_selected_reg : STD_LOGIC_VECTOR(5 DOWNTO 0);
 
 BEGIN
+    -- Instantiate the keyboard module
+    keyboard_interface : ENTITY work.kb_test(arch)
+        PORT MAP(
+            clk => CLK,
+            reset => RESET,
+            ps2d => ps2d,
+            ps2c => ps2c,
+            up => keyboard_up,
+            down => keyboard_down,
+            left => keyboard_left,
+            right => keyboard_right,
+            center => keyboard_center,
+            leds => kb_leds
+        );
 
     -- Output assignments
     cursor_addr <= cursor_reg;
     selected_addr <= selected_reg;
     hilite_selected_square <= '1' WHEN current_state = PIECE_MOVE ELSE
-        '0';
+    '0';
     is_in_initial_state <= '1' WHEN current_state = INITIAL ELSE
-        '0';
+    '0';
     board_change_en_wire <= board_out_en;
 
     move_is_legal <= move_is_legal_internal; -- Assign the internal signal to the output port signal move_is_legal_internal : std_logic;
@@ -98,6 +117,42 @@ BEGIN
     -- Cursor and selected contents
     cursor_contents <= board(to_integer(unsigned(cursor_reg)));
     selected_contents <= board(to_integer(unsigned(selected_reg)));
+
+    PROCESS (CLK)
+        VARIABLE prev_up, prev_down, prev_left, prev_right, prev_center : STD_LOGIC;
+    BEGIN
+        IF rising_edge(CLK) THEN
+            -- Detect rising edges for pulses
+            BtnU <= '0';
+            BtnD <= '0';
+            BtnL <= '0';
+            BtnR <= '0';
+            BtnC <= '0';
+
+            IF keyboard_up = '1' AND prev_up = '0' THEN
+                BtnU <= '1';
+            END IF;
+            IF keyboard_down = '1' AND prev_down = '0' THEN
+                BtnD <= '1';
+            END IF;
+            IF keyboard_left = '1' AND prev_left = '0' THEN
+                BtnL <= '1';
+            END IF;
+            IF keyboard_right = '1' AND prev_right = '0' THEN
+                BtnR <= '1';
+            END IF;
+            IF keyboard_center = '1' AND prev_center = '0' THEN
+                BtnC <= '1';
+            END IF;
+
+            -- Update previous values
+            prev_up := keyboard_up;
+            prev_down := keyboard_down;
+            prev_left := keyboard_left;
+            prev_right := keyboard_right;
+            prev_center := keyboard_center;
+        END IF;
+    END PROCESS;
 
     -- State machine process
     PROCESS (CLK, RESET)
@@ -108,39 +163,39 @@ BEGIN
             cursor_reg <= "000011"; -- White's king pawn
             selected_reg <= (OTHERS => '0');
             board_out_en <= '0';
-        ELSIF rising_edge(CLK) THEN
+
+            ELSIF rising_edge(CLK) THEN
+            selected_reg <= next_selected_reg; -- Update selected_reg here
             IF current_state = INITIAL THEN
                 current_state <= PIECE_SEL; -- Auto-transition out of INITIAL
-            ELSE
+                ELSE
                 current_state <= next_state;
             END IF;
 
             IF BtnL = '1' AND cursor_reg(2 DOWNTO 0) /= "000" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) - 1);
-            ELSIF BtnR = '1' AND cursor_reg(2 DOWNTO 0) /= "111" THEN
+                ELSIF BtnR = '1' AND cursor_reg(2 DOWNTO 0) /= "111" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) + 1);
-            ELSIF BtnU = '1' AND cursor_reg(5 DOWNTO 3) /= "000" THEN
+                ELSIF BtnU = '1' AND cursor_reg(5 DOWNTO 3) /= "000" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) - 8);
-            ELSIF BtnD = '1' AND cursor_reg(5 DOWNTO 3) /= "111" THEN
+                ELSIF BtnD = '1' AND cursor_reg(5 DOWNTO 3) /= "111" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) + 8);
             END IF;
         END IF;
     END PROCESS;
 
     -- Next state logic and output logic
-    PROCESS (current_state, BtnC, cursor_contents, selected_contents, player_to_move)
+    PROCESS (current_state, BtnC, cursor_contents, selected_contents, player_to_move, cursor_reg)
     BEGIN
         next_state <= current_state;
         board_out_en <= '0';
+        next_selected_reg <= selected_reg; -- Default: retain current value
 
         CASE current_state IS
-            WHEN INITIAL =>
-                next_state <= PIECE_SEL;
-
             WHEN PIECE_SEL =>
                 IF BtnC = '1' AND cursor_contents(3) = player_to_move AND cursor_contents(2 DOWNTO 0) /= EMPTY THEN
                     next_state <= PIECE_MOVE;
-                    selected_reg <= cursor_reg;
+                    next_selected_reg <= cursor_reg; -- Update next_selected_reg
                 END IF;
 
             WHEN PIECE_MOVE =>
@@ -148,7 +203,7 @@ BEGIN
                     IF (cursor_contents(3) /= player_to_move OR cursor_contents(2 DOWNTO 0) = EMPTY) AND move_is_legal = '1' THEN
                         next_state <= WRITE_NEW_PIECE;
                     ELSIF cursor_contents(3) = player_to_move AND cursor_contents(2 DOWNTO 0) /= EMPTY THEN
-                        selected_reg <= cursor_reg;
+                        next_selected_reg <= cursor_reg; -- Update next_selected_reg
                     ELSE
                         next_state <= PIECE_SEL;
                     END IF;
