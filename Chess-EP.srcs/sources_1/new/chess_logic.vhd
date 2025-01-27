@@ -115,9 +115,9 @@ BEGIN
     cursor_addr <= cursor_reg;
     selected_addr <= selected_reg;
     hilite_selected_square <= '1' WHEN current_state = PIECE_MOVE ELSE
-    '0';
+        '0';
     is_in_initial_state <= '1' WHEN current_state = INITIAL ELSE
-    '0';
+        '0';
     board_change_en_wire <= board_out_en;
 
     move_is_legal <= move_is_legal_internal; -- Assign the internal signal to the output port signal move_is_legal_internal : std_logic;
@@ -180,11 +180,11 @@ BEGIN
                 board(i) <= BOARD_IN(i);
             END LOOP;
 
-            ELSIF rising_edge(CLK) THEN
+        ELSIF rising_edge(CLK) THEN
             selected_reg <= next_selected_reg; -- Update selected_reg here
             IF current_state = INITIAL THEN
                 current_state <= PIECE_SEL; -- Auto-transition out of INITIAL
-                ELSE
+            ELSE
                 current_state <= next_state;
                 player_to_move <= next_player_to_move;
             END IF;
@@ -198,11 +198,11 @@ BEGIN
 
             IF BtnL = '1' AND cursor_reg(2 DOWNTO 0) /= "000" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) - 1);
-                ELSIF BtnR = '1' AND cursor_reg(2 DOWNTO 0) /= "111" THEN
+            ELSIF BtnR = '1' AND cursor_reg(2 DOWNTO 0) /= "111" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) + 1);
-                ELSIF BtnU = '1' AND cursor_reg(5 DOWNTO 3) /= "000" THEN
+            ELSIF BtnU = '1' AND cursor_reg(5 DOWNTO 3) /= "000" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) - 8);
-                ELSIF BtnD = '1' AND cursor_reg(5 DOWNTO 3) /= "111" THEN
+            ELSIF BtnD = '1' AND cursor_reg(5 DOWNTO 3) /= "111" THEN
                 cursor_reg <= STD_LOGIC_VECTOR(unsigned(cursor_reg) + 8);
             END IF;
         END IF;
@@ -275,68 +275,71 @@ BEGIN
         selected_piece_color := selected_contents(3); -- MSB for color
         selected_piece_type := selected_contents(2 DOWNTO 0); -- LSB for piece type
 
-        --debug_led_piece_type <= selected_piece_type;
-
-        -- Initialize move_is_legal_internal to '0'
-        move_is_legal_internal <= '0';
+        move_is_legal_internal <= '0'; -- Default to legal move
 
         -- Check move legality based on piece type
         CASE selected_piece_type IS
-            WHEN "001" => -- PAWN
-                IF selected_piece_color = '0' THEN -- WHITE
-                    -- Forward move (1 or 2 squares)
-                    IF (v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
-                        (selected_reg(5 DOWNTO 3) = "0001" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+            WHEN "001" => -- PAWN (already handles capture checks)
+                IF selected_piece_color = '0' THEN -- WHITE PAWN
+                    -- Forward move (no capture)
+                    IF ((v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
+                        (selected_reg(5 DOWNTO 3) = "0001" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY)) THEN
                         move_is_legal_internal <= '1';
-                        -- Capture diagonally
-                    ELSIF v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '1' THEN
+                        -- Diagonal capture (enemy piece)
+                    ELSIF (v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '1') THEN
                         move_is_legal_internal <= '1';
                     END IF;
-                ELSIF selected_piece_color = '1' THEN -- BLACK
-                    IF (v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
-                        (selected_reg(5 DOWNTO 3) = "0110" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+                ELSE -- BLACK PAWN
+                    IF ((v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
+                        (selected_reg(5 DOWNTO 3) = "0110" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY)) THEN
                         move_is_legal_internal <= '1';
-                        -- Capture diagonally
-                    ELSIF v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '0' THEN
+                    ELSIF (v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '0') THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 END IF;
 
             WHEN "010" => -- KNIGHT
-                -- Implement knight move logic
                 IF ((v_delta = 2 AND h_delta = 1) OR (v_delta = 1 AND h_delta = 2)) THEN
-                    move_is_legal_internal <= '1';
+                    -- Destination must be empty or enemy
+                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                        move_is_legal_internal <= '1';
+                    END IF;
                 END IF;
 
             WHEN "011" => -- BISHOP
-                -- Implement bishop move logic (e.g., diagonal movement)
                 IF (v_delta = h_delta AND v_delta /= 0) THEN
-                    move_is_legal_internal <= '1';
+                    -- Destination must be empty or enemy
+                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                        move_is_legal_internal <= '1';
+                    END IF;
                 END IF;
 
             WHEN "100" => -- ROOK
-                -- Implement rook move logic (horizontal or vertical)
                 IF ((v_delta = 0 AND h_delta /= 0) OR (h_delta = 0 AND v_delta /= 0)) THEN
-                    move_is_legal_internal <= '1';
+                    -- Destination must be empty or enemy
+                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                        move_is_legal_internal <= '1';
+                    END IF;
                 END IF;
 
             WHEN "101" => -- QUEEN
-                -- Implement queen move logic (combination of rook and bishop)
-                IF ((v_delta = h_delta AND v_delta /= 0) OR
-                    (v_delta = 0 AND h_delta /= 0) OR
-                    (h_delta = 0 AND v_delta /= 0)) THEN
-                    move_is_legal_internal <= '1';
+                IF ((v_delta = h_delta AND v_delta /= 0) OR (v_delta = 0 AND h_delta /= 0) OR (h_delta = 0 AND v_delta /= 0)) THEN
+                    -- Destination must be empty or enemy
+                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                        move_is_legal_internal <= '1';
+                    END IF;
                 END IF;
 
             WHEN "110" => -- KING
-                -- Implement king move logic (one square in any direction)
                 IF (v_delta <= 1 AND h_delta <= 1) THEN
-                    move_is_legal_internal <= '1';
+                    -- Destination must be empty or enemy
+                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                        move_is_legal_internal <= '1';
+                    END IF;
                 END IF;
 
             WHEN OTHERS =>
-                -- For EMPTY or undefined pieces
-                move_is_legal_internal <= '0';
+                move_is_legal_internal <= '0'; -- Invalid piece
         END CASE;
     END PROCESS;
 

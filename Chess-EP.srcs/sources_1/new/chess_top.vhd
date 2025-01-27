@@ -112,7 +112,7 @@ BEGIN
             BOARD => board,
             CURSOR_ADDR => cursor_addr,
             SELECT_ADDR => selected_addr,
-            SELECT_EN => board_change_en,
+            SELECT_EN => hilite_selected,
 
             Hsync => Hsync,
             Vsync => Vsync,
@@ -126,6 +126,8 @@ BEGIN
         IF rising_edge(ClkPort) THEN
             IF Reset = '1' THEN
                 IF is_initial = '1' THEN
+
+                    -- WHITE PIECES
                     board(0) <= "0100"; -- White Rook
                     board(1) <= "0010"; -- White Knight
                     board(2) <= "0011"; -- White Bishop
@@ -144,28 +146,28 @@ BEGIN
                     board(14) <= "0001"; -- White Pawn
                     board(15) <= "0001"; -- White Pawn
 
+                    board(16 TO 47) <= (OTHERS => "0000"); -- for empty Squares
+
                     -- BLACK PIECES
-                    board(48) <= "1100"; -- Black Rook
-                    board(49) <= "1010"; -- Black Knight
-                    board(50) <= "1011"; -- Black Bishop
-                    board(51) <= "1110"; -- Black King
-                    board(52) <= "1101"; -- Black Queen
-                    board(53) <= "1011"; -- Black Bishop
-                    board(54) <= "1010"; -- Black Knight
-                    board(55) <= "1100"; -- Black Rook
+                    board(48) <= "1001"; -- Black Pawn
+                    board(49) <= "1001"; -- Black Pawn
+                    board(50) <= "1001"; -- Black Pawn
+                    board(51) <= "1001"; -- Black Pawn
+                    board(52) <= "1001"; -- Black Pawn
+                    board(53) <= "1001"; -- Black Pawn
+                    board(54) <= "1001"; -- Black Pawn
+                    board(55) <= "1001"; -- Black Pawn
 
-                    board(56) <= "1001"; -- Black Pawn
-                    board(57) <= "1001"; -- Black Pawn
-                    board(58) <= "1001"; -- Black Pawn
-                    board(59) <= "1001"; -- Black Pawn
-                    board(60) <= "1001"; -- Black Pawn
-                    board(61) <= "1001"; -- Black Pawn
-                    board(62) <= "1001"; -- Black Pawn
-                    board(63) <= "1001"; -- Black Pawn
-
-                    board(16 TO 47) <= (OTHERS => "0000"); -- Empty Squares
+                    board(56) <= "1100"; -- Black Rook
+                    board(57) <= "1010"; -- Black Knight
+                    board(58) <= "1011"; -- Black Bishop
+                    board(59) <= "1110"; -- Black King
+                    board(60) <= "1101"; -- Black Queen
+                    board(61) <= "1011"; -- Black Bishop
+                    board(62) <= "1010"; -- Black Knight
+                    board(63) <= "1100"; -- Black Rook
                 END IF;
-                ELSE
+            ELSE
                 IF board_change_en = '1' THEN
                     board(to_integer(unsigned(board_out_addr))) <= board_out_piece;
                 END IF;

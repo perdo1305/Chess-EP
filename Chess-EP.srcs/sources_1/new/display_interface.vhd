@@ -144,7 +144,7 @@ BEGIN
         IF rising_edge(clock) THEN
             IF reset = '1' THEN
                 pixel_color <= RGB_OUTSIDE;
-                ELSE
+            ELSE
                 IF video_on_signal = '1' THEN
 
                     -- Adjust pixel positions to board origin (80, 0)
@@ -162,7 +162,7 @@ BEGIN
                         -- Background color (light/dark square)
                         IF (square_x + square_y) MOD 2 = 0 THEN
                             pixel_color <= RGB_LIGHT_SQ;
-                            ELSE
+                        ELSE
                             pixel_color <= RGB_DARK_SQ;
                         END IF;
 
@@ -178,7 +178,7 @@ BEGIN
                         local_piece_type := BOARD_ARRAY(square_y * 8 + square_x);
                         IF local_piece_type /= EMPTY THEN
                             piece_type <= STD_LOGIC_VECTOR(unsigned(local_piece_type(2 DOWNTO 0)) - 1);
-                            ELSE
+                        ELSE
                             piece_type <= (OTHERS => '0');
                         END IF;
 
@@ -186,8 +186,8 @@ BEGIN
                         IF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(CURSOR_ADDR)) THEN
                             pixel_color <= RGB_CURSOR;
 
-                            --ELSIF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(SELECT_ADDR) AND SELECT_EN = '1') THEN
-                            ELSIF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(SELECT_ADDR)) THEN
+                        ELSIF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(SELECT_ADDR) AND SELECT_EN = '1') THEN
+                            --ELSIF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(SELECT_ADDR)) THEN
                             pixel_color <= RGB_SELECTED;
                         END IF;
 
@@ -196,15 +196,15 @@ BEGIN
                             IF piece_pixels(7 - art_x_delayed) = '1' THEN
                                 IF local_piece_type(3) = '1' THEN -- Black piece
                                     pixel_color <= RGB_BLACK_PIECE;
-                                    ELSE -- White piece
+                                ELSE -- White piece
                                     pixel_color <= RGB_WHITE_PIECE;
                                 END IF;
                             END IF;
                         END IF;
-                        ELSE
+                    ELSE
                         pixel_color <= RGB_OUTSIDE; -- Outside board
                     END IF;
-                    ELSE
+                ELSE
                     pixel_color <= (OTHERS => '0'); -- Blanking period
                 END IF;
             END IF;
