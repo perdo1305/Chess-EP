@@ -7,12 +7,12 @@
   **** SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
   **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
   **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-  **** Start of session at: Mon Jan 27 14:00:17 2025
+  **** Start of session at: Mon Jan 27 21:15:45 2025
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source chess_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1412.668 ; gain = 0.023 ; free physical = 2688 ; free virtual = 12621
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1364.129 ; gain = 7.961 ; free physical = 1457 ; free virtual = 15539
 Command: read_checkpoint -auto_incremental -incremental /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/utils_1/imports/synth_1/vga_test.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -26,31 +26,31 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 1866579
+INFO: [Synth 8-7075] Helper process launched with PID 2090759
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2128.453 ; gain = 412.715 ; free physical = 1675 ; free virtual = 11611
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2128.633 ; gain = 413.715 ; free physical = 1208 ; free virtual = 14958
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'chess_top' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_top.vhd:60]
 INFO: [Synth 8-638] synthesizing module 'chess_logic' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:48]
-INFO: [Synth 8-638] synthesizing module 'kb_test' [/home/pedroferreira/Desktop/part2_PS2/kb_test.vhd:14]
-INFO: [Synth 8-638] synthesizing module 'kb_code' [/home/pedroferreira/Desktop/part2_PS2/kb_code.vhd:16]
-INFO: [Synth 8-638] synthesizing module 'ps2_rx' [/home/pedroferreira/Desktop/part2_PS2/ps2_rx.vhd:15]
-INFO: [Synth 8-256] done synthesizing module 'ps2_rx' (0#1) [/home/pedroferreira/Desktop/part2_PS2/ps2_rx.vhd:15]
-INFO: [Synth 8-638] synthesizing module 'fifo' [/home/pedroferreira/Desktop/fifo.vhd:19]
+INFO: [Synth 8-638] synthesizing module 'kb_test' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/kb_test.vhd:14]
+INFO: [Synth 8-638] synthesizing module 'kb_code' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/kb_code.vhd:16]
+INFO: [Synth 8-638] synthesizing module 'ps2_rx' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/ps2_rx.vhd:15]
+INFO: [Synth 8-256] done synthesizing module 'ps2_rx' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/ps2_rx.vhd:15]
+INFO: [Synth 8-638] synthesizing module 'fifo' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/fifo.vhd:19]
 	Parameter B bound to: 8 - type: integer 
 	Parameter W bound to: 2 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'fifo' (0#1) [/home/pedroferreira/Desktop/fifo.vhd:19]
-INFO: [Synth 8-256] done synthesizing module 'kb_code' (0#1) [/home/pedroferreira/Desktop/part2_PS2/kb_code.vhd:16]
-INFO: [Synth 8-638] synthesizing module 'key2ascii' [/home/pedroferreira/Desktop/part2_PS2/key2ascii.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'key2ascii' (0#1) [/home/pedroferreira/Desktop/part2_PS2/key2ascii.vhd:12]
-INFO: [Synth 8-256] done synthesizing module 'kb_test' (0#1) [/home/pedroferreira/Desktop/part2_PS2/kb_test.vhd:14]
+INFO: [Synth 8-256] done synthesizing module 'fifo' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/fifo.vhd:19]
+INFO: [Synth 8-256] done synthesizing module 'kb_code' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/kb_code.vhd:16]
+INFO: [Synth 8-638] synthesizing module 'key2ascii' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/key2ascii.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'key2ascii' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/key2ascii.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'kb_test' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Keyboard/kb_test.vhd:14]
 WARNING: [Synth 8-614] signal 'BOARD_IN' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:169]
 WARNING: [Synth 8-614] signal 'selected_reg' is read in the process but is not in the sensitivity list [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:212]
 INFO: [Synth 8-256] done synthesizing module 'chess_logic' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:48]
 INFO: [Synth 8-638] synthesizing module 'display_interface' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:45]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1866321-pop-os/realtime/clk_wiz_0_stub.v:6' bound to instance 'clock_unit' of component 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:112]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1866321-pop-os/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-1866321-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-2090003-pop-os/realtime/clk_wiz_0_stub.v:6' bound to instance 'clock_unit' of component 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/display_interface.vhd:112]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-2090003-pop-os/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/.Xil/Vivado-2090003-pop-os/realtime/clk_wiz_0_stub.v:6]
 INFO: [Synth 8-638] synthesizing module 'vga_sync' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'vga_sync' (0#1) [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/vga_sync.vhd:14]
 INFO: [Synth 8-638] synthesizing module 'piece_rom' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/piece_rom.vhd:14]
@@ -67,18 +67,18 @@ WARNING: [Synth 8-7129] Port debug_led_piece_type[1] in module chess_logic is ei
 WARNING: [Synth 8-7129] Port debug_led_piece_type[0] in module chess_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sw[1] in module chess_top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2229.422 ; gain = 513.684 ; free physical = 1558 ; free virtual = 11495
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2236.570 ; gain = 521.652 ; free physical = 1116 ; free virtual = 14803
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2247.234 ; gain = 531.496 ; free physical = 1558 ; free virtual = 11495
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2254.383 ; gain = 539.465 ; free physical = 1115 ; free virtual = 14803
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2247.234 ; gain = 531.496 ; free physical = 1558 ; free virtual = 11495
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2254.383 ; gain = 539.465 ; free physical = 1115 ; free virtual = 14803
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2247.234 ; gain = 0.000 ; free physical = 1556 ; free virtual = 11493
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2254.383 ; gain = 0.000 ; free physical = 1115 ; free virtual = 14803
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -97,29 +97,29 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/chess_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2395.984 ; gain = 0.000 ; free physical = 1562 ; free virtual = 11499
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2402.133 ; gain = 0.000 ; free physical = 1093 ; free virtual = 14793
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2395.984 ; gain = 0.000 ; free physical = 1562 ; free virtual = 11499
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2402.133 ; gain = 0.000 ; free physical = 1095 ; free virtual = 14796
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2395.984 ; gain = 680.246 ; free physical = 1556 ; free virtual = 11493
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2402.133 ; gain = 687.215 ; free physical = 1110 ; free virtual = 14810
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1556 ; free virtual = 11493
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1110 ; free virtual = 14810
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for display_interface_inst/clock_unit. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1556 ; free virtual = 11493
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1110 ; free virtual = 14810
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg_reg' in module 'ps2_rx'
 ---------------------------------------------------------------------------------------------------
@@ -135,7 +135,7 @@ WARNING: [Synth 8-327] inferring latch for variable 'board_out_piece_reg' [/home
 WARNING: [Synth 8-327] inferring latch for variable 'write_addr_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:193]
 WARNING: [Synth 8-327] inferring latch for variable 'write_data_reg' [/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.srcs/sources_1/new/chess_logic.vhd:193]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1538 ; free virtual = 11476
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1101 ; free virtual = 14803
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -211,7 +211,7 @@ WARNING: [Synth 8-7129] Port debug_led_piece_type[1] in module chess_logic is ei
 WARNING: [Synth 8-7129] Port debug_led_piece_type[0] in module chess_logic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sw[1] in module chess_top is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1516 ; free virtual = 11459
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1071 ; free virtual = 14783
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -234,19 +234,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:45 ; elapsed = 00:00:45 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1524 ; free virtual = 11468
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:00:44 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1035 ; free virtual = 14754
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:46 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1531 ; free virtual = 11474
+Finished Timing Optimization : Time (s): cpu = 00:00:44 ; elapsed = 00:00:45 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1031 ; free virtual = 14750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1530 ; free virtual = 11474
+Finished Technology Mapping : Time (s): cpu = 00:00:45 ; elapsed = 00:00:46 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1025 ; free virtual = 14744
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -264,37 +264,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1522 ; free virtual = 11466
+Finished IO Insertion : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1037 ; free virtual = 14756
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1522 ; free virtual = 11466
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1037 ; free virtual = 14756
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1521 ; free virtual = 11465
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1037 ; free virtual = 14756
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1521 ; free virtual = 11465
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1037 ; free virtual = 14756
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1521 ; free virtual = 11465
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1036 ; free virtual = 14755
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1521 ; free virtual = 11465
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1036 ; free virtual = 14755
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -333,18 +333,18 @@ Report Cell Usage:
 |20    |OBUFT   |     3|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.988 ; gain = 688.250 ; free physical = 1521 ; free virtual = 11465
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2410.137 ; gain = 695.219 ; free physical = 1036 ; free virtual = 14755
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 10 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:49 ; elapsed = 00:00:50 . Memory (MB): peak = 2403.988 ; gain = 539.500 ; free physical = 1520 ; free virtual = 11464
-Synthesis Optimization Complete : Time (s): cpu = 00:00:51 ; elapsed = 00:00:52 . Memory (MB): peak = 2403.996 ; gain = 688.250 ; free physical = 1520 ; free virtual = 11464
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 2410.137 ; gain = 547.469 ; free physical = 1034 ; free virtual = 14753
+Synthesis Optimization Complete : Time (s): cpu = 00:00:50 ; elapsed = 00:00:51 . Memory (MB): peak = 2410.145 ; gain = 695.219 ; free physical = 1034 ; free virtual = 14753
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2403.996 ; gain = 0.000 ; free physical = 1798 ; free virtual = 11741
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2410.145 ; gain = 0.000 ; free physical = 1308 ; free virtual = 15027
 INFO: [Netlist 29-17] Analyzing 474 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2460.016 ; gain = 0.000 ; free physical = 1781 ; free virtual = 11724
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2466.164 ; gain = 0.000 ; free physical = 1319 ; free virtual = 15039
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 276 instances were transformed.
   LD => LDCE: 20 instances
@@ -354,10 +354,10 @@ Synth Design complete | Checksum: eaef7997
 INFO: [Common 17-83] Releasing license: Synthesis
 47 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:02 ; elapsed = 00:01:00 . Memory (MB): peak = 2460.016 ; gain = 1047.348 ; free physical = 1780 ; free virtual = 11724
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1945.655; main = 1608.340; forked = 385.712
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3455.500; main = 2460.020; forked = 1051.508
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2484.027 ; gain = 0.000 ; free physical = 1779 ; free virtual = 11723
+synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:00:59 . Memory (MB): peak = 2466.164 ; gain = 1080.223 ; free physical = 1315 ; free virtual = 15035
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1940.507; main = 1609.939; forked = 378.887
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3457.617; main = 2466.168; forked = 1047.477
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2490.176 ; gain = 0.000 ; free physical = 1315 ; free virtual = 15035
 INFO: [Common 17-1381] The checkpoint '/home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/chess_top.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file chess_top_utilization_synth.rpt -pb chess_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Jan 27 14:01:31 2025...
+INFO: [Common 17-206] Exiting Vivado at Mon Jan 27 21:16:58 2025...

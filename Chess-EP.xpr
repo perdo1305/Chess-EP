@@ -128,31 +128,31 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../../Desktop/part2_PS2/key2ascii.vhd">
+      <File Path="$PPRDIR/Keyboard/key2ascii.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../../Desktop/part2_PS2/kb_test.vhd">
+      <File Path="$PPRDIR/Keyboard/kb_test.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../../Desktop/part2_PS2/ps2_rx.vhd">
+      <File Path="$PPRDIR/Keyboard/ps2_rx.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../../Desktop/part2_PS2/kb_code.vhd">
+      <File Path="$PPRDIR/Keyboard/kb_code.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../../Desktop/fifo.vhd">
+      <File Path="$PPRDIR/Keyboard/fifo.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
