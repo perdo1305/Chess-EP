@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1738012540" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1738013598" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
   <File Type="VDS-TIMINGSUMMARY" Name="chess_top_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="chess_top.dcp"/>
   <File Type="RDS-UTIL-PB" Name="chess_top_utilization_synth.pb"/>
@@ -48,31 +48,31 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/Keyboard/key2ascii.vhd">
+    <File Path="$PSRCDIR/Keyboard/key2ascii.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/Keyboard/kb_test.vhd">
+    <File Path="$PSRCDIR/Keyboard/kb_test.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/Keyboard/ps2_rx.vhd">
+    <File Path="$PSRCDIR/Keyboard/ps2_rx.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/Keyboard/kb_code.vhd">
+    <File Path="$PSRCDIR/Keyboard/kb_code.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/Keyboard/fifo.vhd">
+    <File Path="$PSRCDIR/Keyboard/fifo.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
