@@ -50,7 +50,10 @@ ENTITY chess_top IS
 
         -- LEDs
         led : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
-        kb_leds : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
+        kb_leds : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+        debug_led : OUT STD_LOGIC;
+        debug_led_piece_type : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+
     );
 END ENTITY chess_top;
 
@@ -85,7 +88,7 @@ BEGIN
             RESET => Reset, -- reset signal
             ps2d => ps2d, -- PS2 data signal
             ps2c => ps2c, -- PS2 clock signal
-            board_input => board, -- pass the current board state (INPUT)
+            BOARD_IN => board, -- pass the current board state (INPUT)
 
             board_out_addr => board_out_addr, -- address of the piece to be updated (OUTPUT)
             board_out_piece => board_out_piece, -- piece that is being moved to the board_out_addr (OUTPUT) 
@@ -96,7 +99,9 @@ BEGIN
             state => state, -- current state of the state machine 0101(OUTPUT)
             move_is_legal => move_is_legal, -- signal to indicate if the move is legal (OUTPUT)
             is_in_initial_state => is_initial, -- signal to indicate if the state machine is in the initial state (OUTPUT)
-            kb_leds => kb_leds
+            kb_leds => kb_leds,
+            debug_led => debug_led,
+            debug_led_piece_type => debug_led_piece_type
         );
 
     -- Display Interface Module
@@ -119,49 +124,51 @@ BEGIN
     PROCESS (ClkPort, Reset)
     BEGIN
         IF rising_edge(ClkPort) THEN
-            IF Reset = '0' THEN
+            IF Reset = '1' THEN
+                IF is_initial = '1' THEN
+                    board(0) <= "0100"; -- White Rook
+                    board(1) <= "0010"; -- White Knight
+                    board(2) <= "0011"; -- White Bishop
+                    board(3) <= "0110"; -- White King
+                    board(4) <= "0101"; -- White Queen
+                    board(5) <= "0011"; -- White Bishop
+                    board(6) <= "0010"; -- White Knight
+                    board(7) <= "0100"; -- White Rook
+
+                    board(8) <= "0001"; -- White Pawn
+                    board(9) <= "0001"; -- White Pawn
+                    board(10) <= "0001"; -- White Pawn
+                    board(11) <= "0001"; -- White Pawn
+                    board(12) <= "0001"; -- White Pawn
+                    board(13) <= "0001"; -- White Pawn
+                    board(14) <= "0001"; -- White Pawn
+                    board(15) <= "0001"; -- White Pawn
+
+                    -- BLACK PIECES
+                    board(48) <= "1100"; -- Black Rook
+                    board(49) <= "1010"; -- Black Knight
+                    board(50) <= "1011"; -- Black Bishop
+                    board(51) <= "1110"; -- Black King
+                    board(52) <= "1101"; -- Black Queen
+                    board(53) <= "1011"; -- Black Bishop
+                    board(54) <= "1010"; -- Black Knight
+                    board(55) <= "1100"; -- Black Rook
+
+                    board(56) <= "1001"; -- Black Pawn
+                    board(57) <= "1001"; -- Black Pawn
+                    board(58) <= "1001"; -- Black Pawn
+                    board(59) <= "1001"; -- Black Pawn
+                    board(60) <= "1001"; -- Black Pawn
+                    board(61) <= "1001"; -- Black Pawn
+                    board(62) <= "1001"; -- Black Pawn
+                    board(63) <= "1001"; -- Black Pawn
+
+                    board(16 TO 47) <= (OTHERS => "0000"); -- Empty Squares
+                END IF;
+                ELSE
                 IF board_change_en = '1' THEN
                     board(to_integer(unsigned(board_out_addr))) <= board_out_piece;
                 END IF;
-            END IF;
-            IF is_initial = '1' THEN
-                -- WHITE PIECES
-                board(0) <= "0100"; -- White Rook
-                board(1) <= "0010"; -- White Knight
-                board(2) <= "0011"; -- White Bishop
-                board(3) <= "0110"; -- White King
-                board(4) <= "0101"; -- White Queen
-                board(5) <= "0011"; -- White Bishop
-                board(6) <= "0010"; -- White Knight
-                board(7) <= "0100"; -- White Rook
-
-                board(8) <= "0001"; -- White Pawn
-                board(9) <= "0001"; -- White Pawn
-                board(10) <= "0001"; -- White Pawn
-                board(11) <= "0001"; -- White Pawn
-                board(12) <= "0001"; -- White Pawn
-                board(13) <= "0001"; -- White Pawn
-                board(14) <= "0001"; -- White Pawn
-                board(15) <= "0001"; -- White Pawn
-
-                -- BLACK PIECES
-                board(48) <= "1001"; -- Black Rook
-                board(49) <= "1001"; -- Black Knight
-                board(50) <= "1001"; -- Black Bishop
-                board(51) <= "1001"; -- Black King
-                board(52) <= "1001"; -- Black Queen
-                board(53) <= "1001"; -- Black Bishop
-                board(54) <= "1001"; -- Black Knight
-                board(55) <= "1001"; -- Black Rook
-
-                board(56) <= "1100"; -- Black Pawn
-                board(57) <= "1010"; -- Black Pawn
-                board(58) <= "1011"; -- Black Pawn
-                board(59) <= "1110"; -- Black Pawn
-                board(60) <= "1101"; -- Black Pawn
-                board(61) <= "1011"; -- Black Pawn
-                board(62) <= "1010"; -- Black Pawn
-                board(63) <= "1100"; -- Black Pawn
             END IF;
         END IF;
     END PROCESS;

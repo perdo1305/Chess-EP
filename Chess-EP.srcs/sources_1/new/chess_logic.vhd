@@ -29,17 +29,19 @@ ENTITY chess_logic IS
         CLK : IN STD_LOGIC;
         RESET : IN STD_LOGIC;
         ps2d, ps2c : IN STD_LOGIC; -- PS/2 data and clock
-        board_input : board_input;
+        BOARD_IN : IN board_input;
         board_out_addr : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
         board_out_piece : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-        board_change_en_wire : OUT STD_LOGIC;
+        board_change_en_wire : OUT STD_LOGIC; -- Signal to enable board changes
         cursor_addr : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
         selected_addr : OUT STD_LOGIC_VECTOR(5 DOWNTO 0);
         hilite_selected_square : OUT STD_LOGIC;
         state : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
         move_is_legal : BUFFER STD_LOGIC;
         is_in_initial_state : OUT STD_LOGIC;
-        kb_leds : out std_logic_vector(4 downto 0)
+        kb_leds : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
+        debug_led : OUT STD_LOGIC;
+        debug_led_piece_type : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
     );
 END chess_logic;
 
@@ -74,19 +76,25 @@ ARCHITECTURE Behavioral OF chess_logic IS
 
     -- Internal signals
     SIGNAL current_state, next_state : STD_LOGIC_VECTOR(2 DOWNTO 0) := INITIAL;
-    SIGNAL player_to_move : STD_LOGIC := COLOR_WHITE;
     SIGNAL cursor_reg, selected_reg : STD_LOGIC_VECTOR(5 DOWNTO 0) := (OTHERS => '0');
-    TYPE board_array IS ARRAY (0 TO 63) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
-    SIGNAL board : board_array;
+    --TYPE board_array IS ARRAY (0 TO 63) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SIGNAL board : board_input;
     SIGNAL board_out_en : STD_LOGIC := '0';
     SIGNAL cursor_contents, selected_contents : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL h_delta, v_delta : unsigned(3 DOWNTO 0);
     SIGNAL move_is_legal_internal : STD_LOGIC;
+
     SIGNAL BtnU, BtnD, BtnL, BtnR, BtnC : STD_LOGIC;
     SIGNAL keyboard_up, keyboard_down, keyboard_left, keyboard_right, keyboard_center : STD_LOGIC;
 
     SIGNAL next_selected_reg : STD_LOGIC_VECTOR(5 DOWNTO 0);
 
+    SIGNAL player_to_move, next_player_to_move : STD_LOGIC := COLOR_WHITE;
+
+    SIGNAL write_new_piece_en : STD_LOGIC := '0';
+    SIGNAL erase_old_piece_en : STD_LOGIC := '0';
+    SIGNAL write_addr : STD_LOGIC_VECTOR(5 DOWNTO 0);
+    SIGNAL write_data : STD_LOGIC_VECTOR(3 DOWNTO 0);
 BEGIN
     -- Instantiate the keyboard module
     keyboard_interface : ENTITY work.kb_test(arch)
@@ -113,6 +121,9 @@ BEGIN
     board_change_en_wire <= board_out_en;
 
     move_is_legal <= move_is_legal_internal; -- Assign the internal signal to the output port signal move_is_legal_internal : std_logic;
+    debug_led <= move_is_legal_internal; -- Debug LED
+
+    state <= current_state;
 
     -- Cursor and selected contents
     cursor_contents <= board(to_integer(unsigned(cursor_reg)));
@@ -162,7 +173,12 @@ BEGIN
             player_to_move <= COLOR_WHITE;
             cursor_reg <= "000011"; -- White's king pawn
             selected_reg <= (OTHERS => '0');
-            board_out_en <= '0';
+            player_to_move <= COLOR_WHITE;
+
+            -- Initialize board from input
+            FOR i IN 0 TO 63 LOOP
+                board(i) <= BOARD_IN(i);
+            END LOOP;
 
             ELSIF rising_edge(CLK) THEN
             selected_reg <= next_selected_reg; -- Update selected_reg here
@@ -170,6 +186,14 @@ BEGIN
                 current_state <= PIECE_SEL; -- Auto-transition out of INITIAL
                 ELSE
                 current_state <= next_state;
+                player_to_move <= next_player_to_move;
+            END IF;
+
+            IF write_new_piece_en = '1' THEN
+                board(to_integer(unsigned(write_addr))) <= write_data;
+            END IF;
+            IF erase_old_piece_en = '1' THEN
+                board(to_integer(unsigned(selected_reg))) <= EMPTY;
             END IF;
 
             IF BtnL = '1' AND cursor_reg(2 DOWNTO 0) /= "000" THEN
@@ -185,42 +209,52 @@ BEGIN
     END PROCESS;
 
     -- Next state logic and output logic
-    PROCESS (current_state, BtnC, cursor_contents, selected_contents, player_to_move, cursor_reg)
+    PROCESS (current_state, BtnC, cursor_contents, selected_contents, player_to_move, cursor_reg, move_is_legal)
     BEGIN
+        -- Default values for all outputs
         next_state <= current_state;
-        board_out_en <= '0';
-        next_selected_reg <= selected_reg; -- Default: retain current value
+        board_out_en <= '0'; -- Default to '0'
+        next_selected_reg <= selected_reg;
+        next_player_to_move <= player_to_move;
+        write_new_piece_en <= '0';
+        erase_old_piece_en <= '0';
 
         CASE current_state IS
             WHEN PIECE_SEL =>
+
                 IF BtnC = '1' AND cursor_contents(3) = player_to_move AND cursor_contents(2 DOWNTO 0) /= EMPTY THEN
                     next_state <= PIECE_MOVE;
                     next_selected_reg <= cursor_reg; -- Update next_selected_reg
                 END IF;
 
             WHEN PIECE_MOVE =>
+
                 IF BtnC = '1' THEN
-                    IF (cursor_contents(3) /= player_to_move OR cursor_contents(2 DOWNTO 0) = EMPTY) AND move_is_legal = '1' THEN
+                    IF move_is_legal = '1' THEN -- Simplified condition
                         next_state <= WRITE_NEW_PIECE;
                     ELSIF cursor_contents(3) = player_to_move AND cursor_contents(2 DOWNTO 0) /= EMPTY THEN
-                        next_selected_reg <= cursor_reg; -- Update next_selected_reg
+                        next_selected_reg <= cursor_reg; -- Select new piece
                     ELSE
-                        next_state <= PIECE_SEL;
+                        next_state <= PIECE_SEL; -- Cancel move
                     END IF;
                 END IF;
 
             WHEN WRITE_NEW_PIECE =>
-                next_state <= ERASE_OLD_PIECE;
+                board_out_addr <= cursor_reg;
+                board_out_piece <= selected_contents;
                 board_out_en <= '1';
+                write_new_piece_en <= '1'; -- Signal to write new piece
+                write_addr <= cursor_reg;
+                write_data <= selected_contents;
+                next_state <= ERASE_OLD_PIECE;
 
             WHEN ERASE_OLD_PIECE =>
+                board_out_addr <= selected_reg;
+                board_out_piece <= EMPTY;
+                board_out_en <= '1';
+                erase_old_piece_en <= '1'; -- Signal to erase old piece
+                next_player_to_move <= NOT player_to_move;
                 next_state <= PIECE_SEL;
-                --                IF player_to_move = '1' THEN
-                --                    player_to_move <= '0';
-                --                ELSE
-                --                    player_to_move <= '1';
-                --                END IF;
-
             WHEN OTHERS =>
                 next_state <= INITIAL;
         END CASE;
@@ -241,6 +275,8 @@ BEGIN
         selected_piece_color := selected_contents(3); -- MSB for color
         selected_piece_type := selected_contents(2 DOWNTO 0); -- LSB for piece type
 
+        --debug_led_piece_type <= selected_piece_type;
+
         -- Initialize move_is_legal_internal to '0'
         move_is_legal_internal <= '0';
 
@@ -248,13 +284,20 @@ BEGIN
         CASE selected_piece_type IS
             WHEN "001" => -- PAWN
                 IF selected_piece_color = '0' THEN -- WHITE
-                    -- Example: White pawn moves forward
-                    IF (v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+                    -- Forward move (1 or 2 squares)
+                    IF (v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
+                        (selected_reg(5 DOWNTO 3) = "0001" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+                        move_is_legal_internal <= '1';
+                        -- Capture diagonally
+                    ELSIF v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '1' THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 ELSIF selected_piece_color = '1' THEN -- BLACK
-                    -- Example: Black pawn moves forward
-                    IF (v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+                    IF (v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
+                        (selected_reg(5 DOWNTO 3) = "0110" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+                        move_is_legal_internal <= '1';
+                        -- Capture diagonally
+                    ELSIF v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '0' THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 END IF;

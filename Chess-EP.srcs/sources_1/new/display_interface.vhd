@@ -82,7 +82,7 @@ ARCHITECTURE Behavioral OF display_interface IS
     SIGNAL piece_color : STD_LOGIC; -- 0-white, 1-black
     SIGNAL rom_row : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 0-7
     SIGNAL piece_pixels : STD_LOGIC_VECTOR(7 DOWNTO 0); -- 8 pixels/row  
-    
+
     SIGNAL art_x_delayed : INTEGER;
     SIGNAL art_y_delayed : INTEGER;
 
@@ -177,9 +177,9 @@ BEGIN
                         rom_row <= STD_LOGIC_VECTOR(to_unsigned(art_y, 3));
                         local_piece_type := BOARD_ARRAY(square_y * 8 + square_x);
                         IF local_piece_type /= EMPTY THEN
-                            piece_type <= STD_LOGIC_VECTOR(unsigned(local_piece_type(2 DOWNTO 0)) - 1); -- Map "0001" (pawn) to 0, "0010" (knight) to 1, etc.
+                            piece_type <= STD_LOGIC_VECTOR(unsigned(local_piece_type(2 DOWNTO 0)) - 1);
                             ELSE
-                            piece_type <= (OTHERS => '0'); -- Handle empty squares (optional)
+                            piece_type <= (OTHERS => '0');
                         END IF;
 
                         -- Highlight cursor/selected square
