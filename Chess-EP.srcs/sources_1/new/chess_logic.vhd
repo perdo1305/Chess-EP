@@ -41,7 +41,8 @@ ENTITY chess_logic IS
         is_in_initial_state : OUT STD_LOGIC;
         kb_leds : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
         debug_led : OUT STD_LOGIC;
-        debug_led_piece_type : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+        debug_led_piece_type : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+        HIGHLIGHT_SQUARES : OUT STD_LOGIC_VECTOR(63 DOWNTO 0)
     );
 END chess_logic;
 
@@ -95,6 +96,148 @@ ARCHITECTURE Behavioral OF chess_logic IS
     SIGNAL erase_old_piece_en : STD_LOGIC := '0';
     SIGNAL write_addr : STD_LOGIC_VECTOR(5 DOWNTO 0);
     SIGNAL write_data : STD_LOGIC_VECTOR(3 DOWNTO 0);
+
+    FUNCTION is_path_clear(
+        start_x, start_y, end_x, end_y : INTEGER;
+        board : board_input
+    ) RETURN BOOLEAN IS
+        VARIABLE delta_x, delta_y : INTEGER;
+        VARIABLE step_x, step_y : INTEGER := 0;
+        VARIABLE current_x, current_y : INTEGER;
+        VARIABLE idx : INTEGER;
+    BEGIN
+        delta_x := end_x - start_x;
+        delta_y := end_y - start_y;
+
+        -- Calculate step direction for X
+        IF delta_x /= 0 THEN
+            step_x := delta_x / ABS(delta_x); -- +1 or -1
+        END IF;
+
+        -- Calculate step direction for Y
+        IF delta_y /= 0 THEN
+            step_y := delta_y / ABS(delta_y); -- +1 or -1
+        END IF;
+
+        -- Check all squares between start and end (exclusive)
+        FOR i IN 1 TO 7 LOOP
+            -- Exit if beyond required steps
+            IF (ABS(delta_x) > 0 AND i >= ABS(delta_x)) OR
+                (ABS(delta_y) > 0 AND i >= ABS(delta_y)) THEN
+                EXIT;
+            END IF;
+
+            -- Calculate current position
+            current_x := start_x + step_x * i;
+            current_y := start_y + step_y * i;
+            idx := current_y * 8 + current_x;
+
+            -- Check if square is occupied
+            IF board(idx) /= EMPTY THEN
+                RETURN FALSE;
+            END IF;
+        END LOOP;
+
+        RETURN TRUE;
+    END FUNCTION;
+    FUNCTION is_move_legal(
+        start_addr : STD_LOGIC_VECTOR(5 DOWNTO 0);
+        end_addr : STD_LOGIC_VECTOR(5 DOWNTO 0);
+        board : board_input;
+        player_color : STD_LOGIC
+    ) RETURN BOOLEAN IS
+        VARIABLE start_x, start_y, end_x, end_y : INTEGER;
+        VARIABLE h_delta, v_delta : INTEGER;
+        VARIABLE start_piece, end_piece : STD_LOGIC_VECTOR(3 DOWNTO 0);
+        VARIABLE piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0);                                                                           
+        VARIABLE legal : BOOLEAN;
+        VARIABLE intermediate_addr : STD_LOGIC_VECTOR(5 DOWNTO 0);
+    BEGIN
+        -- Extract coordinates from addresses
+        start_x := to_integer(unsigned(start_addr(2 DOWNTO 0)));
+        start_y := to_integer(unsigned(start_addr(5 DOWNTO 3)));
+        end_x := to_integer(unsigned(end_addr(2 DOWNTO 0)));
+        end_y := to_integer(unsigned(end_addr(5 DOWNTO 3)));
+        h_delta := ABS(end_x - start_x);
+        v_delta := ABS(end_y - start_y);
+
+        -- Retrieve start and end pieces
+        start_piece := board(to_integer(unsigned(start_addr)));
+        end_piece := board(to_integer(unsigned(end_addr)));
+
+        -- Check if start piece is valid and belongs to the current player
+        IF start_piece = EMPTY OR start_piece(3) /= player_color THEN
+            RETURN FALSE;
+        END IF;
+
+        -- Check if end square contains a friendly piece
+        IF end_piece /= EMPTY AND end_piece(3) = player_color THEN
+            RETURN FALSE;
+        END IF;
+
+        -- Determine piece type and check move legality
+        piece_type := start_piece(2 DOWNTO 0);
+        legal := FALSE;
+
+        CASE piece_type IS
+            WHEN "001" => -- Pawn
+                IF start_piece(3) = COLOR_WHITE THEN
+                    -- White pawn moves
+                    IF (end_y = start_y + 1) AND (h_delta = 0) AND (end_piece = EMPTY) THEN
+                        legal := TRUE;
+                    ELSIF (start_y = 1) AND (end_y = start_y + 2) AND (h_delta = 0) AND (end_piece = EMPTY) THEN
+                        intermediate_addr := STD_LOGIC_VECTOR(unsigned(start_addr) + 8);
+                        IF board(to_integer(unsigned(intermediate_addr))) = EMPTY THEN
+                            legal := TRUE;
+                        END IF;
+                    ELSIF (end_y = start_y + 1) AND (h_delta = 1) AND (end_piece /= EMPTY AND end_piece(3) = COLOR_BLACK) THEN
+                        legal := TRUE;
+                    END IF;
+                ELSE
+                    -- Black pawn moves
+                    IF (end_y = start_y - 1) AND (h_delta = 0) AND (end_piece = EMPTY) THEN
+                        legal := TRUE;
+                    ELSIF (start_y = 6) AND (end_y = start_y - 2) AND (h_delta = 0) AND (end_piece = EMPTY) THEN
+                        intermediate_addr := STD_LOGIC_VECTOR(unsigned(start_addr) - 8);
+                        IF board(to_integer(unsigned(intermediate_addr))) = EMPTY THEN
+                            legal := TRUE;
+                        END IF;
+                    ELSIF (end_y = start_y - 1) AND (h_delta = 1) AND (end_piece /= EMPTY AND end_piece(3) = COLOR_WHITE) THEN
+                        legal := TRUE;
+                    END IF;
+                END IF;
+
+            WHEN "010" => -- Knight
+                IF (h_delta = 2 AND v_delta = 1) OR (h_delta = 1 AND v_delta = 2) THEN
+                    legal := TRUE;
+                END IF;
+
+            WHEN "011" => -- Bishop
+                IF h_delta = v_delta AND h_delta > 0 THEN
+                    legal := is_path_clear(start_x, start_y, end_x, end_y, board);
+                END IF;
+
+            WHEN "100" => -- Rook
+                IF (h_delta = 0 OR v_delta = 0) AND (h_delta + v_delta > 0) THEN
+                    legal := is_path_clear(start_x, start_y, end_x, end_y, board);
+                END IF;
+
+            WHEN "101" => -- Queen
+                IF (h_delta = v_delta OR h_delta = 0 OR v_delta = 0) AND (h_delta + v_delta > 0) THEN
+                    legal := is_path_clear(start_x, start_y, end_x, end_y, board);
+                END IF;
+
+            WHEN "110" => -- King
+                IF h_delta <= 1 AND v_delta <= 1 THEN
+                    legal := TRUE;
+                END IF;
+
+            WHEN OTHERS =>
+                legal := FALSE;
+        END CASE;
+
+        RETURN legal;
+    END FUNCTION;
 BEGIN
     -- Instantiate the keyboard module
     keyboard_interface : ENTITY work.kb_test(arch)
@@ -128,7 +271,6 @@ BEGIN
     -- Cursor and selected contents
     cursor_contents <= board(to_integer(unsigned(cursor_reg)));
     selected_contents <= board(to_integer(unsigned(selected_reg)));
-
     PROCESS (CLK)
         VARIABLE prev_up, prev_down, prev_left, prev_right, prev_center : STD_LOGIC;
     BEGIN
@@ -222,7 +364,7 @@ BEGIN
         CASE current_state IS
             WHEN PIECE_SEL =>
 
-                IF BtnC = '1' AND cursor_contents(3) = player_to_move AND cursor_contents(2 DOWNTO 0) /= EMPTY THEN
+                IF BtnC = '1' AND cursor_contents(3) = player_to_move AND cursor_contents /= EMPTY THEN
                     next_state <= PIECE_MOVE;
                     next_selected_reg <= cursor_reg; -- Update next_selected_reg
                 END IF;
@@ -232,7 +374,7 @@ BEGIN
                 IF BtnC = '1' THEN
                     IF move_is_legal = '1' THEN -- Simplified condition
                         next_state <= WRITE_NEW_PIECE;
-                    ELSIF cursor_contents(3) = player_to_move AND cursor_contents(2 DOWNTO 0) /= EMPTY THEN
+                    ELSIF cursor_contents(3) = player_to_move AND cursor_contents /= EMPTY THEN
                         next_selected_reg <= cursor_reg; -- Select new piece
                     ELSE
                         next_state <= PIECE_SEL; -- Cancel move
@@ -254,6 +396,7 @@ BEGIN
                 board_out_en <= '1';
                 erase_old_piece_en <= '1'; -- Signal to erase old piece
                 next_player_to_move <= NOT player_to_move;
+                next_selected_reg <= (OTHERS => '0'); -- 
                 next_state <= PIECE_SEL;
             WHEN OTHERS =>
                 next_state <= INITIAL;
@@ -270,8 +413,6 @@ BEGIN
         VARIABLE selected_row, cursor_row : INTEGER;
         VARIABLE v_delta_pawn : INTEGER;
 
-        -- New variables for rook path checking
-        VARIABLE path_clear : BOOLEAN;
         VARIABLE start_x, start_y : INTEGER;
         VARIABLE end_x, end_y : INTEGER;
         VARIABLE step_x, step_y : INTEGER;
@@ -343,24 +484,39 @@ BEGIN
 
             WHEN "011" => -- BISHOP
                 IF (v_delta = h_delta AND v_delta /= 0) THEN
-                    -- Destination must be empty or enemy
-                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                    IF is_path_clear(
+                        start_x => to_integer(unsigned(selected_reg(2 DOWNTO 0))),
+                        start_y => to_integer(unsigned(selected_reg(5 DOWNTO 3))),
+                        end_x => to_integer(unsigned(cursor_reg(2 DOWNTO 0))),
+                        end_y => to_integer(unsigned(cursor_reg(5 DOWNTO 3))),
+                        board => board
+                        ) AND (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 END IF;
 
             WHEN "100" => -- ROOK
-                IF ((v_delta = 0 AND h_delta /= 0) OR (h_delta = 0 AND v_delta /= 0)) THEN
-                    -- Destination must be empty or enemy
-                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                IF (v_delta = 0 OR h_delta = 0) AND (h_delta + v_delta /= 0) THEN
+                    IF is_path_clear(
+                        start_x => to_integer(unsigned(selected_reg(2 DOWNTO 0))),
+                        start_y => to_integer(unsigned(selected_reg(5 DOWNTO 3))),
+                        end_x => to_integer(unsigned(cursor_reg(2 DOWNTO 0))),
+                        end_y => to_integer(unsigned(cursor_reg(5 DOWNTO 3))),
+                        board => board
+                        ) AND (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 END IF;
 
             WHEN "101" => -- QUEEN
                 IF ((v_delta = h_delta AND v_delta /= 0) OR (v_delta = 0 AND h_delta /= 0) OR (h_delta = 0 AND v_delta /= 0)) THEN
-                    -- Destination must be empty or enemy
-                    IF (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
+                    IF is_path_clear(
+                        start_x => to_integer(unsigned(selected_reg(2 DOWNTO 0))),
+                        start_y => to_integer(unsigned(selected_reg(5 DOWNTO 3))),
+                        end_x => to_integer(unsigned(cursor_reg(2 DOWNTO 0))),
+                        end_y => to_integer(unsigned(cursor_reg(5 DOWNTO 3))),
+                        board => board
+                        ) AND (cursor_contents = EMPTY OR cursor_contents(3) /= selected_piece_color) THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 END IF;
@@ -376,6 +532,18 @@ BEGIN
             WHEN OTHERS =>
                 move_is_legal_internal <= '0'; -- Invalid piece
         END CASE;
+    END PROCESS;
+
+    PROCESS (selected_reg, board, player_to_move)
+    BEGIN
+        HIGHLIGHT_SQUARES <= (OTHERS => '0');
+        IF selected_reg /= (selected_reg'RANGE => '0') THEN -- Check if a piece is selected
+            FOR i IN 0 TO 63 LOOP
+                IF is_move_legal(selected_reg, STD_LOGIC_VECTOR(to_unsigned(i, 6)), board, player_to_move) THEN
+                    HIGHLIGHT_SQUARES(i) <= '1';
+                END IF;
+            END LOOP;
+        END IF;
     END PROCESS;
 
 END Behavioral;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1738021973" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1738036947" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/vga_test.dcp">
   <File Type="VDS-TIMINGSUMMARY" Name="chess_top_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="chess_top.dcp"/>
   <File Type="RDS-UTIL-PB" Name="chess_top_utilization_synth.pb"/>

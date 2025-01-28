@@ -76,6 +76,7 @@ ARCHITECTURE Behavioral OF chess_top IS
     SIGNAL vga_G : STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL vga_B : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
+    SIGNAL highlight : STD_LOGIC_VECTOR(63 DOWNTO 0) := (OTHERS => '0');
 BEGIN
 
     -- Assign reset signal
@@ -101,7 +102,8 @@ BEGIN
             is_in_initial_state => is_initial, -- signal to indicate if the state machine is in the initial state (OUTPUT)
             kb_leds => kb_leds,
             debug_led => debug_led,
-            debug_led_piece_type => debug_led_piece_type
+            debug_led_piece_type => debug_led_piece_type,
+            HIGHLIGHT_SQUARES => highlight
         );
 
     -- Display Interface Module
@@ -118,7 +120,8 @@ BEGIN
             Vsync => Vsync,
             R => R,
             G => G,
-            B => B
+            B => B,
+            HIGHLIGHT_SQUARES => highlight
         );
 
     PROCESS (ClkPort, Reset)

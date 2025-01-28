@@ -37,7 +37,9 @@ ENTITY display_interface IS
         Vsync : OUT STD_LOGIC;
         R : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         G : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-        B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+        B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+
+        HIGHLIGHT_SQUARES : IN STD_LOGIC_VECTOR(63 DOWNTO 0)
 
     );
 END display_interface;
@@ -77,6 +79,7 @@ ARCHITECTURE Behavioral OF display_interface IS
     CONSTANT RGB_LIGHT_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111";
     CONSTANT RGB_BLACK_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110011001"; -- grey
     CONSTANT RGB_WHITE_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111011"; -- yellowish white
+    CONSTANT RGB_HIGHLIGHT : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000011111111"; -- Cyan
 
     SIGNAL piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL piece_color : STD_LOGIC; -- 0-white, 1-black
@@ -140,6 +143,7 @@ BEGIN
         VARIABLE local_piece_type : STD_LOGIC_VECTOR(3 DOWNTO 0);
         CONSTANT square_size : INTEGER := 60;
         CONSTANT board_size : INTEGER := 480; -- 8x60
+        VARIABLE square_index : INTEGER;
     BEGIN
         IF rising_edge(clock) THEN
             IF reset = '1' THEN
@@ -158,7 +162,7 @@ BEGIN
                         -- Calculate square indices (0-7)
                         square_x := adjusted_x / square_size;
                         square_y := adjusted_y / square_size;
-
+                        square_index := square_y * 8 + square_x; --for highlighting
                         -- Background color (light/dark square)
                         IF (square_x + square_y) MOD 2 = 0 THEN
                             pixel_color <= RGB_LIGHT_SQ;
@@ -180,6 +184,11 @@ BEGIN
                             piece_type <= STD_LOGIC_VECTOR(unsigned(local_piece_type(2 DOWNTO 0)) - 1);
                         ELSE
                             piece_type <= (OTHERS => '0');
+                        END IF;
+
+                        -- Highlight legal moves
+                        IF HIGHLIGHT_SQUARES(square_index) = '1' THEN
+                            pixel_color <= RGB_HIGHLIGHT;
                         END IF;
 
                         -- Highlight cursor/selected square
