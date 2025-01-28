@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Mon Jan 27 21:33:22 2025
-# Process ID: 2111759
+# Start of session at: Mon Jan 27 23:52:57 2025
+# Process ID: 2245085
 # Current directory: /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1
 # Command line: vivado -log chess_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source chess_top.tcl
 # Log file: /home/pedroferreira/Documents/3_ano_1_Semestre_EEC/Eletronica_Programavel/Project/Chess-EP/Chess-EP.runs/synth_1/chess_top.vds
@@ -13,12 +13,12 @@
 # Platform          :Pop
 # Operating System  :Pop!_OS 22.04 LTS
 # Processor Detail  :AMD Ryzen 7 3700U with Radeon Vega Mobile Gfx
-# CPU Frequency     :3394.674 MHz
+# CPU Frequency     :3307.132 MHz
 # CPU Physical cores:4
 # CPU Logical cores :8
 # Host memory       :14590 MB
 # Swap memory       :14589 MB
 # Total Virtual     :29180 MB
-# Available Virtual :16562 MB
+# Available Virtual :15244 MB
 #-----------------------------------------------------------
 source chess_top.tcl -notrace

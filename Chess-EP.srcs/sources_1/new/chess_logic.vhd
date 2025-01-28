@@ -266,10 +266,26 @@ BEGIN
         VARIABLE v_delta : INTEGER;
         VARIABLE selected_piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0);
         VARIABLE selected_piece_color : STD_LOGIC;
+
+        VARIABLE selected_row, cursor_row : INTEGER;
+        VARIABLE v_delta_pawn : INTEGER;
+
+        -- New variables for rook path checking
+        VARIABLE path_clear : BOOLEAN;
+        VARIABLE start_x, start_y : INTEGER;
+        VARIABLE end_x, end_y : INTEGER;
+        VARIABLE step_x, step_y : INTEGER;
+        VARIABLE delta_x, delta_y : INTEGER;
+        VARIABLE current_x, current_y : INTEGER;
+        VARIABLE idx : INTEGER;
     BEGIN
         -- Calculate horizontal and vertical deltas
         h_delta := ABS(to_integer(unsigned(selected_reg(2 DOWNTO 0))) - to_integer(unsigned(cursor_reg(2 DOWNTO 0))));
         v_delta := ABS(to_integer(unsigned(selected_reg(5 DOWNTO 3))) - to_integer(unsigned(cursor_reg(5 DOWNTO 3))));
+
+        -- Extract rows
+        selected_row := to_integer(unsigned(selected_reg(5 DOWNTO 3)));
+        cursor_row := to_integer(unsigned(cursor_reg(5 DOWNTO 3)));
 
         -- Extract piece type and color from selected_contents
         selected_piece_color := selected_contents(3); -- MSB for color
@@ -280,20 +296,39 @@ BEGIN
         -- Check move legality based on piece type
         CASE selected_piece_type IS
             WHEN "001" => -- PAWN (already handles capture checks)
+                -- Compute direction-sensitive vertical delta
                 IF selected_piece_color = '0' THEN -- WHITE PAWN
-                    -- Forward move (no capture)
-                    IF ((v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
-                        (selected_reg(5 DOWNTO 3) = "0001" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY)) THEN
+                    v_delta_pawn := cursor_row - selected_row;
+                ELSE -- BLACK PAWN
+                    v_delta_pawn := selected_row - cursor_row;
+                END IF;
+
+                IF selected_piece_color = '0' THEN -- WHITE PAWN
+                    -- Forward move (1 square)
+                    IF (v_delta_pawn = 1 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
                         move_is_legal_internal <= '1';
-                        -- Diagonal capture (enemy piece)
-                    ELSIF (v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '1') THEN
+                        -- Two squares from initial position (row 1)
+                    ELSIF (selected_row = 1 AND v_delta_pawn = 2 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+                        -- Check intermediate square (row +1)
+                        IF board(to_integer(unsigned(selected_reg)) + 8) = EMPTY THEN
+                            move_is_legal_internal <= '1';
+                        END IF;
+                        -- Diagonal capture
+                    ELSIF (v_delta_pawn = 1 AND h_delta = 1 AND cursor_contents(3) = '1') THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 ELSE -- BLACK PAWN
-                    IF ((v_delta = 1 AND h_delta = 0 AND cursor_contents = EMPTY) OR
-                        (selected_reg(5 DOWNTO 3) = "0110" AND v_delta = 2 AND h_delta = 0 AND cursor_contents = EMPTY)) THEN
+                    -- Forward move (1 square)
+                    IF (v_delta_pawn = 1 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
                         move_is_legal_internal <= '1';
-                    ELSIF (v_delta = 1 AND h_delta = 1 AND cursor_contents(3) = '0') THEN
+                        -- Two squares from initial position (row 6)
+                    ELSIF (selected_row = 6 AND v_delta_pawn = 2 AND h_delta = 0 AND cursor_contents = EMPTY) THEN
+                        -- Check intermediate square (row -1)
+                        IF board(to_integer(unsigned(selected_reg)) - 8) = EMPTY THEN
+                            move_is_legal_internal <= '1';
+                        END IF;
+                        -- Diagonal capture
+                    ELSIF (v_delta_pawn = 1 AND h_delta = 1 AND cursor_contents(3) = '0') THEN
                         move_is_legal_internal <= '1';
                     END IF;
                 END IF;
