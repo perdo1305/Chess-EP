@@ -1,21 +1,19 @@
 -- filepath: /path/to/chess_top.vhd
--- Company: 
--- Engineer: 
+-- Company: NO sei
+-- Engineers: Pedro & Bruno
 -- 
--- Create Date: [Date]
+-- Create Date: Ontem
 -- Design Name: 
 -- Module Name: chess_top - Behavioral
--- Project Name: 
+-- Project Name: CHESS NARSO
 -- Target Devices: 
--- Tool Versions: 
--- Description: 
---      Converted from Verilog chess_top.v to VHDL.
+-- Tool Versions: my brain
 -- 
--- Dependencies: 
+-- Dependencies: my computer (acer pentium 1 w pop os)
 -- 
 -- Revision:
 -- Revision 0.01 - File Created
--- Additional Comments:
+
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
@@ -25,11 +23,11 @@ USE types_pkg.types_pkg.ALL;
 
 ENTITY chess_top IS
     PORT (
-        -- Clock and Reset
-        ClkPort : IN STD_LOGIC; -- Board's 100MHz clock
+        -- clock and reset
+        ClkPort : IN STD_LOGIC; -- board's 100MHz clock
         sw : IN STD_LOGIC_VECTOR(1 DOWNTO 0); -- For reset
 
-        -- Buttons
+        -- buttons
         --btnL : IN STD_LOGIC; -- Left
         --btnU : IN STD_LOGIC; -- Up
         --btnD : IN STD_LOGIC; -- Down
@@ -52,8 +50,8 @@ ENTITY chess_top IS
         led : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
         kb_leds : OUT STD_LOGIC_VECTOR(4 DOWNTO 0);
         debug_led : OUT STD_LOGIC;
-        debug_led_piece_type : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
-
+        debug_led_piece_type : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+        checkmate_signal : OUT STD_LOGIC
     );
 END ENTITY chess_top;
 
@@ -77,12 +75,17 @@ ARCHITECTURE Behavioral OF chess_top IS
     SIGNAL vga_B : STD_LOGIC_VECTOR(3 DOWNTO 0);
 
     SIGNAL highlight : STD_LOGIC_VECTOR(63 DOWNTO 0) := (OTHERS => '0');
+
+    --SIGNAL checkmate_internal : STD_LOGIC;
+
+    SIGNAL player_selected : STD_LOGIC;
+
 BEGIN
 
-    -- Assign reset signal
+    -- assign the reset signal to the switch
     Reset <= sw(0);
 
-    -- Chess Logic Module
+    -- initialize the chess logic module
     chess_logic_inst : ENTITY work.chess_logic
         PORT MAP(
             CLK => ClkPort, -- clock signal to synchronize
@@ -100,13 +103,15 @@ BEGIN
             state => state, -- current state of the state machine 0101(OUTPUT)
             move_is_legal => move_is_legal, -- signal to indicate if the move is legal (OUTPUT)
             is_in_initial_state => is_initial, -- signal to indicate if the state machine is in the initial state (OUTPUT)
-            kb_leds => kb_leds,
-            debug_led => debug_led,
-            debug_led_piece_type => debug_led_piece_type,
-            HIGHLIGHT_SQUARES => highlight
+            kb_leds => kb_leds, -- keyboard LEDs
+            debug_led => debug_led, -- debug LED  for general purpose
+            debug_led_piece_type => debug_led_piece_type, -- debug LED for piece type
+            HIGHLIGHT_SQUARES => highlight, -- highlight squares when piece selected
+            --checkmate => checkmate_internal, -- in checkmate state
+            player_selected => player_selected
         );
 
-    -- Display Interface Module
+    -- initialize display Interface Module
     display_interface_inst : ENTITY work.display_interface
         PORT MAP(
             clk => ClkPort,
@@ -121,7 +126,8 @@ BEGIN
             R => R,
             G => G,
             B => B,
-            HIGHLIGHT_SQUARES => highlight
+            HIGHLIGHT_SQUARES => highlight,
+            player_selected => player_selected
         );
 
     PROCESS (ClkPort, Reset)
@@ -172,22 +178,23 @@ BEGIN
                 END IF;
             ELSE
                 IF board_change_en = '1' THEN
-                    board(to_integer(unsigned(board_out_addr))) <= board_out_piece;
+                    board(to_integer(unsigned(board_out_addr))) <= board_out_piece; -- update the board
                 END IF;
             END IF;
         END IF;
     END PROCESS;
 
-    -- Map RGB signals to VGA outputs
+    -- VGA outputs
     R <= vga_R;
     G <= vga_G;
     B <= vga_B;
-
     -- debug LEDs
     led(0) <= is_initial;
     led(1) <= move_is_legal;
     led(2) <= state(0);
     led(3) <= state(1);
-    led(4) <= state(2);
+    --led(4) <= state(2);
+    --checkmate_signal <= checkmate_internal;
+    --led(4) <= checkmate_internal;
 
 END ARCHITECTURE Behavioral;

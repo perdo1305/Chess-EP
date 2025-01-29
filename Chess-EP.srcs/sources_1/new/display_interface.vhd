@@ -21,7 +21,7 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-LIBRARY types_pkg;
+LIBRARY types_pkg; --custom lib to use in multiple files the board type
 USE types_pkg.types_pkg.ALL;
 
 ENTITY display_interface IS
@@ -39,7 +39,8 @@ ENTITY display_interface IS
         G : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
         B : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 
-        HIGHLIGHT_SQUARES : IN STD_LOGIC_VECTOR(63 DOWNTO 0)
+        HIGHLIGHT_SQUARES : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+        player_selected : IN STD_LOGIC
 
     );
 END display_interface;
@@ -49,7 +50,7 @@ ARCHITECTURE Behavioral OF display_interface IS
     --TYPE board_input IS ARRAY (0 TO 63) OF STD_LOGIC_VECTOR(3 DOWNTO 0);
     SIGNAL BOARD_ARRAY : board_input;
 
-    SIGNAL board_vector : STD_LOGIC_VECTOR(255 DOWNTO 0);
+    --SIGNAL board_vector : STD_LOGIC_VECTOR(255 DOWNTO 0);
     SIGNAL pixel_color : STD_LOGIC_VECTOR(11 DOWNTO 0);
     SIGNAL video_on_signal : STD_LOGIC;
     SIGNAL clock, locked : STD_LOGIC;
@@ -75,22 +76,25 @@ ARCHITECTURE Behavioral OF display_interface IS
     CONSTANT RGB_OUTSIDE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110000100"; -- dark green
     CONSTANT RGB_CURSOR : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111110100000"; -- orange
     CONSTANT RGB_SELECTED : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000011110000"; -- bright green
-    CONSTANT RGB_DARK_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000000000000";
-    CONSTANT RGB_LIGHT_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111";
+    CONSTANT RGB_DARK_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000000000000"; -- black
+    CONSTANT RGB_LIGHT_SQ : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111111"; -- white
     CONSTANT RGB_BLACK_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "100110011001"; -- grey
     CONSTANT RGB_WHITE_PIECE : STD_LOGIC_VECTOR(11 DOWNTO 0) := "111111111011"; -- yellowish white
     CONSTANT RGB_HIGHLIGHT : STD_LOGIC_VECTOR(11 DOWNTO 0) := "000011111111"; -- Cyan
 
-    SIGNAL piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SIGNAL piece_type : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 0-5
     SIGNAL piece_color : STD_LOGIC; -- 0-white, 1-black
     SIGNAL rom_row : STD_LOGIC_VECTOR(2 DOWNTO 0); -- 0-7
     SIGNAL piece_pixels : STD_LOGIC_VECTOR(7 DOWNTO 0); -- 8 pixels/row  
 
-    SIGNAL art_x_delayed : INTEGER;
-    SIGNAL art_y_delayed : INTEGER;
+    SIGNAL art_x_delayed : INTEGER; --idk just worked
+    SIGNAL art_y_delayed : INTEGER; --idk just worked
 
-    SIGNAL counter_row, counter_col : STD_LOGIC_VECTOR(2 DOWNTO 0);
-    SIGNAL art_x, art_y : INTEGER;
+    SIGNAL art_x, art_y : INTEGER; --0-7
+
+    SIGNAL counter_row, counter_col : STD_LOGIC_VECTOR(2 DOWNTO 0); --0-7
+
+    -- clock init
     COMPONENT clk_wiz_0
         PORT (
             clk_in1 : IN STD_LOGIC;
@@ -100,7 +104,7 @@ ARCHITECTURE Behavioral OF display_interface IS
         );
     END COMPONENT;
 
-    --converts a flat vector to a 2D array
+    --converts a flat vector to a 2D array !!!!!!! NOT USED!!!!!!!!!!!!!!!!!!!!!!!!!1
     FUNCTION to_board_array(flat_vector : STD_LOGIC_VECTOR(255 DOWNTO 0)) RETURN board_input IS
         VARIABLE result : board_input;
     BEGIN
@@ -111,7 +115,7 @@ ARCHITECTURE Behavioral OF display_interface IS
     END FUNCTION;
 
 BEGIN
-    -- Instantiate clock wizard circuit
+    -- instantiate clock wizard circuit
     clock_unit : clk_wiz_0
     PORT MAP(
         clk_in1 => clk,
@@ -120,7 +124,7 @@ BEGIN
         clk_out1 => clock
     );
 
-    -- Instantiate vga_sync
+    -- instantiate vga_sync
     vga_sync_unit : ENTITY work.vga_sync
         PORT MAP(
             clk => clock, reset => reset, hsync => Hsync,
@@ -128,7 +132,7 @@ BEGIN
             p_tick => OPEN, pixel_x => pixel_x, pixel_y => pixel_y
         );
 
-    -- Connect to ROM
+    -- connect to ROM
     piece_rom_unit : ENTITY work.piece_rom
         PORT MAP(
             clk => clock,
@@ -136,34 +140,37 @@ BEGIN
             row_addr => rom_row,
             pixel_data => piece_pixels
         );
-    BOARD_ARRAY <= BOARD;
+
+    BOARD_ARRAY <= BOARD; --assign the board input to the internal array
+
+    ------------------------Process to draw to the display--------------------------
     PROCESS (clock)
-        VARIABLE square_x, square_y : INTEGER;
-        VARIABLE adjusted_x, adjusted_y : INTEGER;
-        VARIABLE local_piece_type : STD_LOGIC_VECTOR(3 DOWNTO 0);
-        CONSTANT square_size : INTEGER := 60;
+        VARIABLE square_x, square_y : INTEGER; -- 0-7
+        VARIABLE adjusted_x, adjusted_y : INTEGER; -- 0-479
+        VARIABLE local_piece_type : STD_LOGIC_VECTOR(3 DOWNTO 0); -- 0-5
+        CONSTANT square_size : INTEGER := 60; -- 480/8
         CONSTANT board_size : INTEGER := 480; -- 8x60
-        VARIABLE square_index : INTEGER;
+        VARIABLE square_index : INTEGER; -- 0-63 
     BEGIN
         IF rising_edge(clock) THEN
             IF reset = '1' THEN
-                pixel_color <= RGB_OUTSIDE;
+                pixel_color <= RGB_OUTSIDE; -- reset color
             ELSE
                 IF video_on_signal = '1' THEN
 
-                    -- Adjust pixel positions to board origin (80, 0)
+                    -- adjust pixel positions to board origin (80, 0)
                     adjusted_x := to_integer(unsigned(pixel_x)) - 80;
                     adjusted_y := to_integer(unsigned(pixel_y)) - 0;
 
-                    -- Inside board area?
+                    -- inside board area?
                     IF adjusted_x >= 0 AND adjusted_x < 480 AND
                         adjusted_y >= 0 AND adjusted_y < 480 THEN
 
-                        -- Calculate square indices (0-7)
+                        -- calculate square indices (0-7)
                         square_x := adjusted_x / square_size;
                         square_y := adjusted_y / square_size;
                         square_index := square_y * 8 + square_x; --for highlighting
-                        -- Background color (light/dark square)
+                        -- vackground color (light/dark square)
                         IF (square_x + square_y) MOD 2 = 0 THEN
                             pixel_color <= RGB_LIGHT_SQ;
                         ELSE
@@ -173,7 +180,7 @@ BEGIN
                         art_x_delayed <= art_x;
                         art_y_delayed <= art_y;
 
-                        -- Calculate ROM row/column
+                        --calculate rom row/column
                         art_x <= ((adjusted_x MOD square_size) * 8) / square_size;
                         art_y <= ((adjusted_y MOD square_size) * 8) / square_size;
 
@@ -186,42 +193,54 @@ BEGIN
                             piece_type <= (OTHERS => '0');
                         END IF;
 
-                        -- Highlight legal moves
+                        -- highlight legal moves
                         IF HIGHLIGHT_SQUARES(square_index) = '1' THEN
                             pixel_color <= RGB_HIGHLIGHT;
                         END IF;
 
-                        -- Highlight cursor/selected square
+                        -- highlight cursor/selected square
                         IF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(CURSOR_ADDR)) THEN
                             pixel_color <= RGB_CURSOR;
-
                         ELSIF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(SELECT_ADDR) AND SELECT_EN = '1') THEN
                             --ELSIF (to_unsigned(square_y, 3) & to_unsigned(square_x, 3) = unsigned(SELECT_ADDR)) THEN
                             pixel_color <= RGB_SELECTED;
                         END IF;
 
-                        IF local_piece_type /= EMPTY THEN -- Only draw if square is not empty
-                            --Draw piece pixels (USE delayed art_x due TO ROM latency)
+                        IF local_piece_type /= EMPTY THEN -- only draw if square is not empty
+                            --draw piece pixels (USE delayed art_x due TO ROM latency)
                             IF piece_pixels(7 - art_x_delayed) = '1' THEN
-                                IF local_piece_type(3) = '1' THEN -- Black piece
+                                IF local_piece_type(3) = '1' THEN -- black piece
                                     pixel_color <= RGB_BLACK_PIECE;
-                                ELSE -- White piece
+                                ELSE -- white piece
                                     pixel_color <= RGB_WHITE_PIECE;
                                 END IF;
                             END IF;
                         END IF;
                     ELSE
-                        pixel_color <= RGB_OUTSIDE; -- Outside board
+                        pixel_color <= RGB_OUTSIDE; -- outside board
                     END IF;
                 ELSE
-                    pixel_color <= (OTHERS => '0'); -- Blanking period
+                    pixel_color <= (OTHERS => '0'); -- video off
+                END IF;
+
+                IF player_selected = '0' THEN
+                    -- white player
+                    IF to_integer(unsigned(pixel_x)) >= 20 AND to_integer(unsigned(pixel_x)) < 50 AND
+                        to_integer(unsigned(pixel_y)) >= 20 AND to_integer(unsigned(pixel_y)) < 50 THEN
+                        pixel_color <= RGB_WHITE_PIECE;
+                    END IF;
+                ELSE
+                    -- black player 
+                    IF to_integer(unsigned(pixel_x)) >= 20 AND to_integer(unsigned(pixel_x)) < 50 AND
+                        to_integer(unsigned(pixel_y)) >= 420 AND to_integer(unsigned(pixel_y)) < 450 THEN
+                        pixel_color <= RGB_BLACK_PIECE;
+                    END IF;
                 END IF;
             END IF;
         END IF;
     END PROCESS;
 
-    -- ...existing code for assigning R, G, B...
-
+    -- assign color 
     R <= pixel_color(11 DOWNTO 8);
     G <= pixel_color(7 DOWNTO 4);
     B <= pixel_color(3 DOWNTO 0);
